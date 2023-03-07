@@ -14,6 +14,14 @@ class DoctorProfilesController < ApplicationController
     end
   end
 
+  def show
+    p
+    @doctor = DoctorProfile.findAll(params[:id])
+
+    "This is the user bro ::::==> #{@doctor}"
+
+  end
+
   private
 
   def doctor_params
