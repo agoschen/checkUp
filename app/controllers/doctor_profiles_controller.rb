@@ -5,10 +5,10 @@ class DoctorProfilesController < ApplicationController
   end
 
   def create
-    @user = current_user
     @doctor_profile = DoctorProfile.new(doctor_params)
+    @doctor_profile.user = current_user
     if @doctor_profile.save
-      redirect_to doctors_path(@doctor_profile), notice: "Doctor profile was successfully created."
+      redirect_to root_path, notice: "Doctor profile was successfully created."
     else
       render :new, status: :unprocessable_entity, notice: "Doctor profile was not successfully created."
     end

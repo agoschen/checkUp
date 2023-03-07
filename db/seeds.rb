@@ -11,9 +11,9 @@ p "Creating users...."
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
     address: Faker::Address.full_address,
-    email: Faker::Name.first_name + "@gmail.com",
+    email: Faker::Internet.email,
     phone_number: Faker::PhoneNumber.cell_phone,
-    password: 'Test123'
+    password: Faker::Internet.password
   )
 
   p "Creating users: name:#{user[:first_name]} phone number:#{user[:phone_number]}"
@@ -29,9 +29,9 @@ puts "-" * 20
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
     address: Faker::Address.full_address,
-    email:  Faker::Name.first_name + "@gmail.com",
+    email: Faker::Internet.email,
     phone_number: Faker::PhoneNumber.cell_phone,
-    password: 'Test123'
+    password: Faker::Internet.password
   )
 
   puts "-" * 20
@@ -42,6 +42,7 @@ puts "-" * 20
   doctor_profiles = DoctorProfile.create(
     specialty: Faker::Job.key_skill,
     practice_address: Faker::Address.full_address,
+    availability: Faker::Date.between(from: 1.year.ago, to: 1.year.from_now),
     user_id: user[:id]
   )
 
@@ -52,7 +53,7 @@ puts "-" * 20
 
 
   apointments = Appointment.create!(
-    date: Faker::Date.between(from: '2014-09-23', to: '2014-09-25'),
+    date: Faker::Date.between(from: 1.year.ago, to: 1.year.from_now),
     start_time: Faker::Time.between(from: DateTime.now - 1, to: DateTime.now),
     end_time: Faker::Time.between(from: DateTime.now - 1, to: DateTime.now),
     status: true,

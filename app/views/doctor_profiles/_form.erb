@@ -1,4 +1,4 @@
-<%= simple_form_for [@user, @doctor_profile] do |f| %>
+<%= simple_form_for @doctor_profile do |f| %>
   <%= f.input :specialty, label: 'Specialty' %>
   <%= f.input :practice_address, label: 'Practice Address' %>
   <%= f.input :availability, label: 'Availability' %>
