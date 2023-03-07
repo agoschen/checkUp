@@ -10,20 +10,20 @@
   </div>
 <% end %>
 
+
+<div class="cards-container">
+ <%= @doctor_profiles.each do |doctor|%>
 <div class="card-trip">
-  <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
+ <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
   <div class="card-trip-infos">
-    <div>
-      <h2>Title here</h2>
-      <p>Short description here!</p>
+  <h2><%= doctor.user.first_name %> <%= doctor.user.last_name %></h2>
+        <p><%= doctor.specialty %></p>
     </div>
-    <h2 class="card-trip-pricing">£99.99</h2>
-    <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
-  </div>
+    </div>
+  <% end %>
 </div>
 
-
-<p>Find me in app/views/pages/home.html.erb</p>
+  <img id="map" src='https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/2.3381,48.8693,10.45,0,0/600x1000?access_token=pk.eyJ1IjoibW9qYWZhIiwiYSI6ImNsZThpM3JucTBhbDczbmxyNWlzd3R1MWEifQ.8xObjW9Cp5yWF7vKywiUmg'>
 </div>
-<%#  <%= user_signed_in? %>
-<%# <%= current_user.email %>
+
+</div>
