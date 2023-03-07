@@ -53,9 +53,13 @@ puts "-" * 20
     password: '123456'
   )
 
-  doctor_profile = DoctorProfile.create!(
-    user: user,
-    specialty: Faker::Job.field,
+  puts "-" * 20
+  puts "CREATING doctors: name:#{user[:first_name]} phone number:#{user[:phone_number]}"
+
+  puts "This is Dr #{user.last_name}"
+
+  doctor_profiles = DoctorProfile.create(
+    specialty: Faker::Job.key_skill,
     practice_address: Faker::Address.full_address,
     availability: Faker::Date.between(from: 1.year.ago, to: 1.year.from_now),
     user_id: user.id
