@@ -47,7 +47,7 @@ puts "-" * 20
 
   puts "Creating doctor profiles: specialty:#{doctor_profiles[:specialty]} user id::#{doctor_profiles[:user_id]}"
   puts "-" * 20
-  puts "CREATING APOINTMENTS"
+  puts "CREATING APPOINTMENTS"
   puts "-" * 20
 
 
