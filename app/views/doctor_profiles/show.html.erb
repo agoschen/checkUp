@@ -1,3 +1,17 @@
 <div class="container">
 <h1>All doctors</h1>
+<h1><%=@doc_details.first_name %></h1>
+
+
+<div class="card-product">
+  <img src="https://xsgames.co/randomusers/avatar.php?g=male">
+  <div class="card-product-infos">
+    <h2><%=@doc_details.first_name %></h2>
+    <p><strong><%=@doc_info.specialty %></strong> .</p>
+    <p><p><%=@doc_details.phone_number %></p></p>
+    <p><%=@doc_info.practice_address %></p>
+  </div>
+</div>
+
+
 </div>
