@@ -31,36 +31,52 @@ puts "Creating users..."
     address: Faker::Address.full_address,
     phone_number: Faker::PhoneNumber.phone_number,
     email: Faker::Internet.email,
-    password: Faker::Internet.password
-    # password_confirmation: Faker::Internet.password
+    phone_number: Faker::PhoneNumber.cell_phone,
+    password: '123456'
   )
 
-  # Create the doctor profile
+  p "Creating users: name:#{user[:first_name]} phone number:#{user.email}"
+end
 
-  #  ok i need the users to have images
-  #  i need to create a doctor profile for each user
-  #  i need to create 5 appointments for each doctor profile
-  #  i need to create 5 appointments for each user
+puts "done creating users"
+puts "-" * 20
+puts "CREATING DOCTORS"
+puts "-" * 20
 
+5.times do
+  user = User.create!(
+    first_name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name,
+    address: Faker::Address.full_address,
+    email: Faker::Internet.email,
+    phone_number: Faker::PhoneNumber.cell_phone,
+    password: '123456'
+  )
 
   doctor_profile = DoctorProfile.create!(
     user: user,
     specialty: Faker::Job.field,
     practice_address: Faker::Address.full_address,
-    availability: Faker::Date.between(from: 1.year.ago, to: 1.year.from_now)
+    availability: Faker::Date.between(from: 1.year.ago, to: 1.year.from_now),
+    user_id: user.id
   )
 
-  # Create 5 appointments
-  5.times do
-    Appointment.create!(
-      user: user,
-      doctor_profile: doctor_profile,
-      date: Faker::Date.between(from: 1.year.ago, to: 1.year.from_now),
-      start_time: Faker::Time.between(from: DateTime.now - 1, to: DateTime.now),
-      end_time: Faker::Time.between(from: DateTime.now - 1, to: DateTime.now),
-      status: Faker::Boolean.boolean
-    )
-  end
+  puts "Creating doctor profiles: email:#{doctor_profiles.user.email} user id::#{doctor_profiles[:user_id]}"
+  puts "-" * 20
+  puts "CREATING APPOINTMENTS"
+  puts "-" * 20
+
+
+  appointments = Appointment.create!(
+    date: Faker::Date.between(from: 1.year.ago, to: 1.year.from_now),
+    start_time: Faker::Time.between(from: DateTime.now - 1, to: DateTime.now),
+    end_time: Faker::Time.between(from: DateTime.now - 1, to: DateTime.now),
+    status: true,
+    user_id: user.id,
+    doctor_profile_id: doctor_profiles.id
+  )
+  puts "THIS IS THE APPOINTMENTS DATE::: #{appointments.date}"
+  puts "-" * 20
 end
 
 puts "Finished!"
