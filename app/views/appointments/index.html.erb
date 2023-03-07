@@ -1,0 +1,42 @@
+<h1> My Appointments </h1>
+
+<h3> Logged in as <%= current_user.first_name %> </h3>
+<p> user id = <%= current_user.id  %> </p>
+
+<div class="cards">
+    <% @appointments.each do |appointment| %>
+      <%= link_to appointment_path(appointment) do %>
+        <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
+          <li>
+            Appointment date: <%= appointment.date %> ,
+            Appointment time: <%= appointment.start_time %> ,
+            With Dr <%= appointment.doctor_profile.user.first_name%>
+          </li>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+
+
+
+<div class="cards">
+    <% @appointment.each do |appointment| %>
+      <%= link_to appointment_path(appointment) do %>
+        <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
+          <%= appointment.user.doctor_profile_id %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+
+
+<ol>
+  <% @appointments.each do |appointment|%>
+    <li>
+        Appointment date: <%= appointment.date %> ,
+        Appointment time: <%= appointment.start_time %> ,
+        With Dr <%= appointment.doctor_profile.user.first_name%>
+    </li>
+      <%= link_to "View Appointment", appointment_path(appointment) %>
+  <% end %>
+</ol>
