@@ -24,56 +24,36 @@ puts "Creating users..."
 # Create 10 users
 10.times do
 
-  # Generate a random name
-  name = Faker::Name.name
-
-  # Generate a random email
-  email = Faker::Internet.email
-
-  # Generate a random password
-  password = Faker::Internet.password
-
   # Create the user
   user = User.create!(
-    name: name,
-    email: email,
-    password: password
+    Faker::TvShows::Simpsons.location,
+    first_name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name,
+    address: Faker::Address.full_address,
+    phone_number: Faker::PhoneNumber.phone_number,
+    email: Faker::Internet.email,
+    password: Faker::Internet.password,
+    password_confirmation: Faker::Internet.password
   )
-
-  # Generate a random address
-  address = Faker::Address.full_address
-
-  # Generate a random phone number
-  phone_number = Faker::PhoneNumber.phone_number
-
-  # Generate a random speciality
-  speciality = Faker::Job.field
-
-  # Generate a random bio
-  bio = Faker::Lorem.paragraph
-
-  # Generate a random price
-  price = rand(50..500)
-
-  # Generate a random photo
-  photo = "https://source.unsplash.com/featured/?doctor"
 
   # Create the doctor profile
   doctor_profile = DoctorProfile.create!(
     user: user,
-    address: address,
-    phone_number: phone_number,
-    speciality: speciality,
-    bio: bio,
-    price: price
+    speciality: Faker::Job.field,
+    practice_address: Faker::Address.full_address
   )
 
-  # Download the photo from the internet
-  file = URI.open(photo)
-
-  # Attach the photo to the doctor profile
-  doctor_profile.photo.attach(io: file, filename: "doctor-#{doctor_profile.id}.jpg", content_type: "image/jpg")
-
+  # Create 5 appointments
+  5.times do
+    Appointment.create!(
+      user: user,
+      doctor_profile: doctor_profile,
+      date: Faker::Date.between(from: 1.year.ago, to: 1.year.from_now),
+      start_time: Faker::Time.between(from: DateTime.now - 1, to: DateTime.now),
+      end_time: Faker::Time.between(from: DateTime.now - 1, to: DateTime.now),
+      status: Faker::Boolean.boolean
+    )
+  end
 end
 
 puts "Finished!"
