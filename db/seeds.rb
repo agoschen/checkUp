@@ -1,17 +1,35 @@
+# This file should contain all the record creation needed to seed the database with its default values.
+# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
+#
+# Examples:
+#
+#   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
+#   Character.create(name: "Luke", movie: movies.first)
 
-puts "Starting database"
-puts "Cleaning database"
+# For this seed we will be using:
+# - faker to generate names and addresses
+# - open-uri to download images from the internet
+# - active storage to attach the images to the records
+
+require "open-uri"
+
+puts "Cleaning database..."
+
+Appointment.destroy_all
 DoctorProfile.destroy_all
 User.destroy_all
-Appointment.destroy_all
 
-p "Creating users...."
+puts "Creating users..."
 
-20.times do
+# Create 10 users
+10.times do
+
+  # Create the user
   user = User.create!(
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
     address: Faker::Address.full_address,
+    phone_number: Faker::PhoneNumber.phone_number,
     email: Faker::Internet.email,
     phone_number: Faker::PhoneNumber.cell_phone,
     password: '123456'
@@ -35,13 +53,9 @@ puts "-" * 20
     password: '123456'
   )
 
-  puts "-" * 20
-  puts "CREATING USERS FOR doctors: name:#{user[:first_name]} phone number:#{user[:phone_number]}"
-
-  puts "This is user id::: #{user.first_name}"
-
-  doctor_profiles = DoctorProfile.create(
-    specialty: Faker::Job.key_skill,
+  doctor_profile = DoctorProfile.create!(
+    user: user,
+    specialty: Faker::Job.field,
     practice_address: Faker::Address.full_address,
     availability: Faker::Date.between(from: 1.year.ago, to: 1.year.from_now),
     user_id: user.id
@@ -64,3 +78,5 @@ puts "-" * 20
   puts "THIS IS THE APPOINTMENTS DATE::: #{appointments.date}"
   puts "-" * 20
 end
+
+puts "Finished!"
