@@ -36,9 +36,9 @@ puts "-" * 20
   )
 
   puts "-" * 20
-  puts "CREATING USERS FOR doctors: name:#{user[:first_name]} phone number:#{user[:phone_number]}"
+  puts "CREATING doctors: name:#{user[:first_name]} phone number:#{user[:phone_number]}"
 
-  puts "This is user id::: #{user.first_name}"
+  puts "This is Dr #{user.last_name}"
 
   doctor_profiles = DoctorProfile.create(
     specialty: Faker::Job.key_skill,
