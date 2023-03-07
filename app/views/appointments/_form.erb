@@ -1,0 +1,6 @@
+<%= simple_form_for @appointment do |f| %>
+  <%= f.input :date, label: 'Date' %>
+  <%= f.input :start_time, label: 'Start_time' %>
+  <%= f.input :end_time, label: 'End_time' %>
+  <%= f.button :submit, class:"btn btn-secondary" %>
+<% end %>

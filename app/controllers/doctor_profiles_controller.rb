@@ -14,9 +14,13 @@ class DoctorProfilesController < ApplicationController
     end
   end
 
+  def index
+    @doctor_profiles = DoctorProfile.all
+  end
+
   def show
-    @doc_info = DoctorProfile.find(params[:id])
-    @doc_details = User.find(@doc_info.user_id)
+    @doctor_profile = DoctorProfile.find(params[:id])
+    @doctor_profile_user = User.find(@doctor_profile.user_id)
   end
 
   private
