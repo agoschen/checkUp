@@ -1,14 +1,23 @@
+
+<div class="container">
+
 <h1> My Appointments </h1>
 
 <h3> Logged in as <%= current_user.first_name %> </h3>
 <p> user id = <%= current_user.id  %> </p>
 <ol>
   <% @appointments.each do |appointment|%>
-    <li>
-        Appointment date: <%= appointment.date %> ,
-        Appointment time: <%= appointment.start_time %> ,
-        With Dr <%= appointment.doctor_profile.user.first_name%>
-    </li>
-      <%= link_to "View Appointment", appointment_path(appointment) %>
-  <% end %>
-</ol>
+    <%= link_to appointment_path(appointment) do %>
+      <div class="card-appointment">
+        <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+          <div class="card-appointment-infos">
+            <h2>With Dr <%= appointment.doctor_profile.user.first_name%></h2>
+              <p> Appointment date: <%= appointment.date %></p>
+              <p>Appointment time: <%= appointment.start_time %></p>
+        </div>
+      </div>
+      <% end %>
+    <% end %>
+  </div>
+  
+</div>
