@@ -1,7 +1,7 @@
 class AppointmentsController < ApplicationController
 
   def index
-    @appointments = Appointment.all
+    @appointments = Appointment.where(user_id: current_user)
   end
 
   # def show

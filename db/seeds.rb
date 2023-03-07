@@ -1,33 +1,6 @@
-test_user = User.create!(
-  first_name: "Sam",
-  last_name: "Wise",
-  address: "Hobbit Lane",
-  email: "test@test.com",
-  phone_number: "12345",
-  password:"password"
-)
-
-p "Created a test user '#{test_user.email}' with password '#{test_user.password}'"
-
-test_user_dr = User.create!(
-  first_name: "Dr Rob",
-  last_name: "Kennedy",
-  address: "HoutBay Lane",
-  email: "test2@test.com",
-  phone_number: "12345",
-  password:"password"
-)
-doctor_profiles = DoctorProfile.create!(
-  specialty: Faker::Job.key_skill,
-  practice_address: Faker::Address.full_address,
-  availability: Faker::Date.between(from: 1.year.ago, to: 1.year.from_now),
-  user_id: test_user_dr.id
-)
-p "Created a test user Dr #{test_user_dr.last_name} with specialty  email '#{test_user_dr.email}' and password '#{test_user_dr.password}'"
-
 
 puts "Starting database"
-puts "Cleaning databas.....e"
+puts "Cleaning database"
 DoctorProfile.destroy_all
 User.destroy_all
 Appointment.destroy_all
@@ -41,15 +14,15 @@ p "Creating users...."
     address: Faker::Address.full_address,
     email: Faker::Internet.email,
     phone_number: Faker::PhoneNumber.cell_phone,
-    password: Faker::Internet.password
+    password: '123456'
   )
 
-  p "Creating users: name:#{user[:first_name]} phone number:#{user[:phone_number]}"
+  p "Creating users: name:#{user[:first_name]} phone number:#{user.email}"
 end
 
 puts "done creating users"
 puts "-" * 20
-puts "CREATING DOCTOS"
+puts "CREATING DOCTORS"
 puts "-" * 20
 
 5.times do
@@ -59,7 +32,7 @@ puts "-" * 20
     address: Faker::Address.full_address,
     email: Faker::Internet.email,
     phone_number: Faker::PhoneNumber.cell_phone,
-    password: Faker::Internet.password
+    password: '123456'
   )
 
   puts "-" * 20
@@ -71,23 +44,23 @@ puts "-" * 20
     specialty: Faker::Job.key_skill,
     practice_address: Faker::Address.full_address,
     availability: Faker::Date.between(from: 1.year.ago, to: 1.year.from_now),
-    user_id: user[:id]
+    user_id: user.id
   )
 
-  puts "Creating doctor profiles: specialty:#{doctor_profiles[:specialty]} user id::#{doctor_profiles[:user_id]}"
+  puts "Creating doctor profiles: email:#{doctor_profiles.user.email} user id::#{doctor_profiles[:user_id]}"
   puts "-" * 20
-  puts "CREATING APOINTMENTS"
+  puts "CREATING APPOINTMENTS"
   puts "-" * 20
 
 
-  apointments = Appointment.create!(
+  appointments = Appointment.create!(
     date: Faker::Date.between(from: 1.year.ago, to: 1.year.from_now),
     start_time: Faker::Time.between(from: DateTime.now - 1, to: DateTime.now),
     end_time: Faker::Time.between(from: DateTime.now - 1, to: DateTime.now),
     status: true,
-    user_id: user[:id],
-    doctor_profile_id: doctor_profiles[:id]
+    user_id: user.id,
+    doctor_profile_id: doctor_profiles.id
   )
-  puts "THIS IS THE APPOINTMENTS DATE::: #{apointments.date}"
+  puts "THIS IS THE APPOINTMENTS DATE::: #{appointments.date}"
   puts "-" * 20
 end
