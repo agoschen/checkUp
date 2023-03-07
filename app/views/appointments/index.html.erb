@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <h1> My Appointments </h1>
 
 <h3> Logged in as <%= current_user.first_name %> </h3>
@@ -40,3 +41,18 @@
       <%= link_to "View Appointment", appointment_path(appointment) %>
   <% end %>
 </ol>
+=======
+<h1> Appointments index </h1>
+
+<ol>
+  <% @appointments.each do |appointment|%>
+    <li> <%= appointment.date %>
+         <%= appointment.start_time  %>
+         <%= appointment.user_id%> </li>
+          <%# do from user profile page - devise; I want to access the name of this user_id. or better interpolate "Dr #{last_name} -  #{specialty}%>
+  <% end %>
+</ol>
+<%# <br>
+
+<%= link_to "This specific appt", appointment_path %>
+>>>>>>> cc75ab833274ea1683890d47e3d5d8b7255f6d9c
