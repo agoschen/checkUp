@@ -19,21 +19,21 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_06_135807) do
     t.time "start_time"
     t.time "end_time"
     t.bigint "user_id", null: false
-    t.bigint "doctor_id", null: false
+    t.bigint "doctor_profile_id", null: false
     t.boolean "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["doctor_id"], name: "index_appointments_on_doctor_id"
+    t.index ["doctor_profile_id"], name: "index_appointments_on_doctor_profile_id"
     t.index ["user_id"], name: "index_appointments_on_user_id"
   end
 
-  create_table "doctors", force: :cascade do |t|
+  create_table "doctor_profiles", force: :cascade do |t|
     t.string "specialty"
     t.string "practice_address"
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_doctors_on_user_id"
+    t.index ["user_id"], name: "index_doctor_profiles_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -52,7 +52,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_06_135807) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "appointments", "doctors"
+  add_foreign_key "appointments", "doctor_profiles"
   add_foreign_key "appointments", "users"
-  add_foreign_key "doctors", "users"
+  add_foreign_key "doctor_profiles", "users"
 end
