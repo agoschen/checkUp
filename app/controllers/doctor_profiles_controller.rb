@@ -16,8 +16,7 @@ class DoctorProfilesController < ApplicationController
 
   def show
     @doc_info = DoctorProfile.find(params[:id])
-    @doc_details = User.find(@doc_info[:user_id])
-    @doc_details.first_name
+    @doc_details = User.find(@doc_info.user_id)
   end
 
   private
