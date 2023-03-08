@@ -6,7 +6,7 @@ class AppointmentsController < ApplicationController
   end
 
   def create
-    @appointment = Appointmnent.new(appointment_params)
+    @appointment = Appointment.new(appointment_params)
     @doctor_profile = DoctorProfile.find(params[:doctor_profile_id])
     @appointment.doctor_profile_id = @doctor_profile.id
     @appointment.user_id = current_user.id
