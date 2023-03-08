@@ -1,5 +1,8 @@
+
+<% specialty_array = ["Dentist", "Psychologist", "Psychiatrist", "General Practitioner", "Dermatologist", "OB/GYN", "Cardiologist", "Opthamologist", "Paediatrician", "Ear, Nose & Throat Specialist"] %>
+
 <%= simple_form_for @doctor_profile do |f| %>
-  <%= f.input :specialty, label: 'Specialty' %>
+  <%= f.input :specialty, label: 'Specialty', collection: specialty_array.sort %>
   <%= f.input :practice_address, label: 'Practice Address' %>
   <%= f.input :availability, label: 'Availability' %>
   <%= f.button :submit, class:"btn btn-secondary" %>
