@@ -2,7 +2,7 @@ class AppointmentsController < ApplicationController
   before_action :set_params, only: %i[ show ]
   
   def index
-    @appointments = Appointment.where(doctor_profile_id: params[:doctor_profile_id])
+    @appointments = Appointment.where(user_id: current_user)
   end
 
   def create
