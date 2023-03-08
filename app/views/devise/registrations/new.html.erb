@@ -31,7 +31,7 @@
     <%= f.input :password_confirmation,
                 required: true,
                 input_html: { autocomplete: "new-password" } %>
-    <%= f.input :photo,
+    <%= f.input :photo, as: :file,
                 required: false,
                 autofocus: true,
                 input_html: { autocomplete: "photo" }%>
