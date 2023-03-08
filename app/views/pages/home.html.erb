@@ -1,31 +1,28 @@
 
 <div class="container">
-<h1>Pages#home</h1>
-<%= simple_form_for :search, url: root_path, method: :get do |f| %>
-  <div class="search-form-control form-group">
-    <input class="form-control string required" type="text" name="search[query]" id="search_query" />
-    <button name="button" type="submit" class="btn btn-flat">
-      <i class="fas fa-search"></i> Search
-    </button>
-  </div>
-<% end %>
-
-
-<div class="cards-container">
- <%= @doctor_profiles.each do |doctor|%>
-<div class="card-trip">
- <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
-  <div class="card-trip-infos">
-  <h2><%= doctor.user.first_name %> <%= doctor.user.last_name %></h2>
-        <p><%= doctor.specialty %></p>
+  <h1>Pages#home</h1>
+  <%= simple_form_for :search, url: root_path, method: :get do |f| %>
+    <div class="search-form-control form-group">
+      <input class="form-control string required" type="text" name="search[query]" id="search_query" />
+      <button name="button" type="submit" class="btn btn-flat">
+        <i class="fas fa-search"></i> Search
+      </button>
     </div>
-    </div>
-      <a href="/doctor_profiles/:id">Show more...</a>
   <% end %>
-</div>
+
+
+  <div class="cards-container">
+  <%= @doctor_profiles.each do |doctor|%>
+    <div class="card-trip">
+      <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
+      <div class="card-trip-infos">
+        <h2>Dr. <%= doctor.user.first_name %> <%= doctor.user.last_name %></h2>
+        <p><%= doctor.specialty %></p>
+      </div>
+      <%= link_to "Show more...", doctor_profile_path(doctor) %>
+    </div>
+  <% end %>
+  </div>
 
   <img id="map" src='https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/2.3381,48.8693,10.45,0,0/600x1000?access_token=pk.eyJ1IjoibW9qYWZhIiwiYSI6ImNsZThpM3JucTBhbDczbmxyNWlzd3R1MWEifQ.8xObjW9Cp5yWF7vKywiUmg'>
-</div>
-
-
 </div>
