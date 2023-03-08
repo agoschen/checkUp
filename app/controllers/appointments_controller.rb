@@ -19,5 +19,13 @@ class AppointmentsController < ApplicationController
     puts "this is the DOCTOR!!! #{@params}"
   end
 
+  def show
+    @appointment = Appointment.find(params[:id])
+  end
 
+  private
+
+  def appointment_params
+    params.require(:appointment).permit(:date, :start_time, :end_time, :user_id, :doctor_profile_id)
+  end
 end

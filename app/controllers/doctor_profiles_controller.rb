@@ -14,12 +14,15 @@ class DoctorProfilesController < ApplicationController
     end
   end
 
+  def index
+    @doctor_profiles = DoctorProfile.all
+  end
+
   def show
     @doc_info = DoctorProfile.find(params[:id])
     @doc_details = User.find(@doc_info.user_id)
     @day = Availability.where(doctor_profile_id: @doc_info.id)
     @available_days = @day.map {| day | Day.find(day.day_id)}
-
   end
 
   private
