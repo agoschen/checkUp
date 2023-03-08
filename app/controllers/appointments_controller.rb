@@ -16,7 +16,9 @@ class AppointmentsController < ApplicationController
     # params[:end_time]
     # params[:date]
     # params[:doctor_profile_id]
+    # params[:illness_details]
     puts "this is the DOCTOR!!! #{@params}"
+    puts "this is the current user!!! #{@params}"
   end
 
   def show

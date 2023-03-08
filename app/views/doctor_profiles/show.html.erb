@@ -14,7 +14,12 @@
     </div>
     <div class="second-wrap">
       <form action="/doctor_profiles/:doctor_profile_id/appointments" method="post">
-      <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+        <div class="">
+          <p>Problem?</p>
+          <textarea name='illness_details' placeholder="Describe your illness..." type="text"></textarea>
+        </div>
+        <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+      <p>Apointment Details:</p>
         <div class="">
           <div class="">
             <p>From: </p><input name="start_time" type="time">
