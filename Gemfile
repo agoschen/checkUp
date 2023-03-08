@@ -79,3 +79,7 @@ end
 gem "devise"
 
 gem "faker"
+
+gem 'momentjs-rails', '~> 2.17', '>= 2.17.1'
+
+gem "simple_calendar", "~> 2.4"

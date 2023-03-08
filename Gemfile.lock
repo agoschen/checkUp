@@ -140,6 +140,8 @@ GEM
     method_source (1.0.0)
     mini_mime (1.1.2)
     minitest (5.18.0)
+    momentjs-rails (2.29.4.1)
+      railties (>= 3.1)
     msgpack (1.6.1)
     net-imap (0.3.4)
       date
@@ -213,6 +215,8 @@ GEM
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
+    simple_calendar (2.4.3)
+      rails (>= 3.0)
     sprockets (4.2.0)
       concurrent-ruby (~> 1.0)
       rack (>= 2.2.4, < 4)
@@ -266,11 +270,13 @@ DEPENDENCIES
   font-awesome-sass (~> 6.1)
   jbuilder
   jsbundling-rails
+  momentjs-rails (~> 2.17, >= 2.17.1)
   pg (~> 1.1)
   puma (~> 5.0)
   rails (~> 7.0.4, >= 7.0.4.2)
   sassc-rails
   selenium-webdriver
+  simple_calendar (~> 2.4)
   simple_form!
   sprockets-rails
   stimulus-rails

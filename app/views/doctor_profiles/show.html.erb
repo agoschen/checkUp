@@ -1,17 +1,46 @@
 <div class="container">
-<h1>All doctors</h1>
+<h1><%=@doc_info.specialty %></h1>
 <h1><%=@doc_details.first_name %></h1>
 
-
-<div class="card-product">
-  <img src="https://xsgames.co/randomusers/avatar.php?g=male">
-  <div class="card-product-infos">
-    <h2><%=@doc_details.first_name %></h2>
-    <p><strong><%=@doc_info.specialty %></strong> .</p>
-    <p><p><%=@doc_details.phone_number %></p></p>
-    <p><%=@doc_info.practice_address %></p>
+  <div class="wrapper">
+    <div class="card-product first-wrap">
+      <img src="https://xsgames.co/randomusers/avatar.php?g=male">
+      <div class="card-product-infos">
+        <h2><%=@doc_details.first_name %></h2>
+        <p><strong><%=@doc_info.specialty %></strong> .</p>
+        <p><p><%=@doc_details.phone_number %></p></p>
+        <p><%=@doc_info.practice_address %></p>
+      </div>
+    </div>
+    <div class="second-wrap">
+      <form action="/doctor_profiles/:doctor_profile_id/appointments" method="post">
+      <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+        <div class="">
+          <div class="">
+            <p>From: </p><input name="start_time" type="time">
+          </div>
+          <div class="">
+            <p>To: </p><input name="end_time" type="time">
+          </div>
+        </div>
+        <div class="">
+          <p>Date: </p><input name="date" type="date">
+        </div>
+          <input class="book" type="submit" value="Book">
+      </form>
+    </div>
   </div>
-</div>
+    <div class="">
+        <%  @available_days.each do | day | %>
+          <p>Day: <%= day.day %></p>
+          <p>From: <%= day.start_time %></p>
+          <p>To: <%= day.end_time %></p>
+        <% end %>
+    </div>
 
-
+  <div class="">
+    <%= month_calendar do |date| %>
+      <%= date %>
+    <% end %>
+  </div>
 </div>

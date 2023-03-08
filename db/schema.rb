@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_07_103228) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_08_084050) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -27,6 +27,23 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_07_103228) do
     t.index ["user_id"], name: "index_appointments_on_user_id"
   end
 
+  create_table "availabilities", force: :cascade do |t|
+    t.bigint "doctor_profile_id", null: false
+    t.bigint "day_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["day_id"], name: "index_availabilities_on_day_id"
+    t.index ["doctor_profile_id"], name: "index_availabilities_on_doctor_profile_id"
+  end
+
+  create_table "days", force: :cascade do |t|
+    t.date "day"
+    t.time "start_time"
+    t.time "end_time"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "doctor_profiles", force: :cascade do |t|
     t.string "specialty"
     t.string "practice_address"
@@ -35,6 +52,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_07_103228) do
     t.datetime "updated_at", null: false
     t.date "availability"
     t.index ["user_id"], name: "index_doctor_profiles_on_user_id"
+  end
+
+  create_table "meetings", force: :cascade do |t|
+    t.string "name"
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_meetings_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -55,5 +82,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_07_103228) do
 
   add_foreign_key "appointments", "doctor_profiles"
   add_foreign_key "appointments", "users"
+  add_foreign_key "availabilities", "days"
+  add_foreign_key "availabilities", "doctor_profiles"
   add_foreign_key "doctor_profiles", "users"
+  add_foreign_key "meetings", "users"
 end

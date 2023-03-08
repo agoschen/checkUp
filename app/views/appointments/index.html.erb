@@ -1,13 +1,23 @@
-<h1> Appointments index </h1>
-
-<ol>
-  <% @appointments.each do |appointment|%>
-    <li> <%= appointment.date %>
-         <%= appointment.start_time  %>
-         <%= appointment.user_id%> </li>
-          <%# do from user profile page - devise; I want to access the name of this user_id. or better interpolate "Dr #{last_name} -  #{specialty}%>
-  <% end %>
-</ol>
-<%# <br>
-
-<%= link_to "This specific appt", appointment_path %>
+<div class="container">
+  <h1> Appointments </h1>
+  <div class="wrapper">
+    <div class="">
+      <div class="card-product first-wrap">
+        <img src="https://xsgames.co/randomusers/avatar.php?g=male">
+        <div class="card-product-infos">
+          <% @user.each do | user | %>
+            <p>Name: <%=user.first_name %></p>
+            <p>Email: <%=user.email %></p>
+            <p>Phone: <%=user.phone_number %></p>
+            <p>Address: <%=user.address %></p>
+          <% end %>
+            <% @appointments.each do |appointment|%>
+              <p>Date: <%= appointment.date %></p>
+              <p>From: <%= appointment.start_time %></p>
+              <p>To: <%= appointment.end_time %></p>
+            <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
