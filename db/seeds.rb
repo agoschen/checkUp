@@ -87,6 +87,8 @@ puts "-" * 20
     end_time: Faker::Time.between(from: DateTime.now - 1, to: DateTime.now),
     status: true,
     user_id: user.id,
+    note: "",
+    doctor_note: "",
     doctor_profile_id: doctor_profiles.id
   )
   puts "THIS IS THE APPOINTMENTS DATE::: #{appointments.date}"
