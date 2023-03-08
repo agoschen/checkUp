@@ -1,4 +1,5 @@
 class AppointmentsController < ApplicationController
+  before_action :set_params, only: %i[ show ]
   # attr_reader :params
   def index
     p "This is the params :::#{params}"
@@ -6,6 +7,7 @@ class AppointmentsController < ApplicationController
     @appointments = Appointment.where(doctor_profile_id: params[:doctor_profile_id])
     @user = @appointments.map { |user| User.find(user.user_id)}
   end
+
 
   def create
     puts "--" * 40
@@ -17,15 +19,18 @@ class AppointmentsController < ApplicationController
     # params[:date]
     # params[:doctor_profile_id]
     # params[:illness_details]
-    puts "this is the DOCTOR!!! #{@params}"
-    puts "this is the current user!!! #{@params}"
+    puts "this is the DOCTOR!!! #{params[:doctor_profile_id]}"
+    puts "this is the current user!!! #{current_user}"
   end
 
   def show
-    @appointment = Appointment.find(params[:id])
   end
 
   private
+
+  def set_params
+    @appointment = Appointment.find(params[:id])
+  end
 
   def appointment_params
     params.require(:appointment).permit(:date, :start_time, :end_time, :user_id, :doctor_profile_id)

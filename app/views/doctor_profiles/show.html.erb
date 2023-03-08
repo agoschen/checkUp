@@ -10,10 +10,11 @@
         <p><strong><%=@doc_info.specialty %></strong> .</p>
         <p><p><%=@doc_details.phone_number %></p></p>
         <p><%=@doc_info.practice_address %></p>
+        <p><%=@doc_info.id %></p>
       </div>
     </div>
     <div class="second-wrap">
-      <form action="/doctor_profiles/:doctor_profile_id/appointments" method="post">
+      <form action="/doctor_profiles/<%= @doc_info.id %>/appointments" method="post">
         <div class="">
           <p>Problem?</p>
           <textarea name='illness_details' placeholder="Describe your illness..." type="text"></textarea>
