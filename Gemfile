@@ -82,3 +82,7 @@ gem "faker"
 gem "geocoder"
 
 gem "cloudinary"
+
+gem "momentjs-rails"
+
+gem "simple_calendar"

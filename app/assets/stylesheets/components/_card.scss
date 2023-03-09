@@ -1,32 +1,77 @@
-.card-product {
-  overflow: hidden;
-  height: 400px;
-  background: white;
-  display: flex;
-  align-items: center;
+.card-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px;
 
-  .card-product img {
-    max-height: 400px;
-    min-height: 400px;
+  .card-product, .home {
+    border: 1px solid rgb(255, 255, 255);
+    transition: .2s ease;
+    cursor: pointer;
+    &:hover{
+      border: 1px solid grey;
+      box-shadow: 1px 2px 2px grey;
+    }
+    p{
+      margin: 0;
+      padding: 0;
+     }
+    .phone, .specialty{
+      color: grey;
+    }
+  }
+  .home {
+    overflow: hidden;
+    background: white;
+    display: flex;
+    align-items: start;
+    flex-direction: column;
+    .home img {
+      width: 100%;
+      object-fit: contain;
+      height: 100px;
+    }
+    .card-product-infos {
+      padding: 8px 16px;
+    }
+  }
+}
+.wrapper {
+  .card-product {
+    overflow: hidden;
     height: 400px;
-    width: 400px;
-    object-fit: cover;
-  }
+    background: rgb(255, 255, 255);
+    display: flex;
+    align-items: center;
 
-  .card-product h2 {
-    font-size: 16px;
-    font-weight: bold;
-    margin: 0;
-  }
+    .card-product img {
+      max-height: 400px;
+      min-height: 400px;
+      height: 400px;
+      width: 400px;
+      object-fit: cover;
+    }
 
-  .card-product p {
-    font-size: 12px;
-    line-height: 1.1;
-    opacity: .7;
-    margin-bottom: 0;
-  }
+    .card-product h2 {
+      font-size: 16px;
+      font-weight: bold;
+      margin: 0;
+    }
 
-  .card-product-infos {
-    padding: 16px;
+    .card-product p {
+      font-size: 12px;
+      line-height: 1.1;
+      opacity: .7;
+      margin-bottom: 0;
+    }
+
+    .card-product-infos {
+      padding: 16px;
+    }
+  }
+}
+
+.second-wrap {
+  input {
+    width: 100%;
   }
 }
