@@ -3,7 +3,11 @@ class AppointmentsController < ApplicationController
 
   def index
     @appointments = Appointment.where(user_id: current_user)
-    @doctor_appointments = Appointment.where(doctor_profile_id: current_user.doctor_profile.id)
+    if current_user.doctor_profile.nil?
+      @doctor_appointments = []
+    else
+     @doctor_appointments = Appointment.where(doctor_profile_id: current_user.doctor_profile.id)
+    end
   end
 
   def create

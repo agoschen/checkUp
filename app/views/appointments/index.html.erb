@@ -1,5 +1,4 @@
-    <h3> Logged in as:<%= current_user.first_name %> </h3>
-      <p> user id: = <%= current_user.id  %> </p>
+
       <%# can delete the logged in as details before completion %>
 
 <div class="container">
@@ -8,7 +7,7 @@
 
   <% if @appointments.empty? %>
   <h2>Upcoming appointments with Doctors: </h2>
-    <h3>You have no upcoming appoinments</h3>
+    <h3>You have no upcoming appointments</h3>
     <p>****************************************************************************</p>
  <% else  %>
   <h2>Upcoming appointments with Doctors: </h2>
@@ -31,6 +30,7 @@
         <% end %>
       <% end %>
 <% end %>
+<br>
 
  <% if @doctor_appointments.empty? %>
   <h2>Upcoming appointments with Patients: </h2>
@@ -58,4 +58,3 @@
     </div>
   <% end %>
 </div>
-
