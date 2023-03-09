@@ -7,4 +7,17 @@ class DoctorProfile < ApplicationRecord
   validates :specialty, presence: true
   validates :practice_address, presence: true
 
+  include PgSearch::Model
+  pg_search_scope :search_by_specialty,
+    against: [ :specialty ],
+    using: {
+      tsearch: { prefix: true }
+    }
+
+  pg_search_scope :search_by_practice_address,
+    against: [ :practice_address ],
+    using: {
+      tsearch: { prefix: true }
+    }
+
 end
