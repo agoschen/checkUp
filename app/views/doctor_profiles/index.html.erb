@@ -2,6 +2,7 @@
   <%= @doctor_profiles.each do |doctor|%>
     <div class="card-trip">
       <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
+      <%# show page also needs a link to the dr file upload on cloudinary %>
       <div class="card-trip-infos">
         <h2>Dr. <%= doctor.user.first_name %> <%= doctor.user.last_name %></h2>
         <p><%= doctor.specialty %></p>

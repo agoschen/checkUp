@@ -2,5 +2,11 @@
   <%= f.input :specialty, label: 'Specialty' %>
   <%= f.input :practice_address, label: 'Practice Address' %>
   <%= f.input :availability, label: 'Availability' %>
+  <%# f.input :img_upload_file?, label: 'profile pic' %>
+  <%# im not sure what this needs to be - some kind of  %>
+  <%# input space to upload a file for dr profile now that cloudinary is working ? %>
+  <%# ALSO - the availability could be presented to them graphically so they just select slots. An array.
+  This links back to their profile when you click on their profile -to book an appt -
+  you would then select one of the available slots and that could map to a second array that holds "booked appts"%>
   <%= f.button :submit, class:"btn btn-secondary" %>
 <% end %>
