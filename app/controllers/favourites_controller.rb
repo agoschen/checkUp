@@ -13,7 +13,7 @@ class FavouritesController < ApplicationController
     else
       flash[:danger] = "Unable to add doctor to favourites"
     end
-    redirect_to doctor_profiles_path
+    redirect_to favourites_path
   end
 
   def destroy
@@ -23,6 +23,6 @@ class FavouritesController < ApplicationController
     else
       flash[:danger] = "Unable to remove doctor from favourites"
     end
-    redirect_to doctor_profiles_path
+    redirect_to favourites_path
   end
 end
