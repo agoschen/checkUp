@@ -12,6 +12,11 @@
         <p><%=@doctor_profile.specialty %></p>
         <p><%=@doctor_profile.user.phone_number %></p>
         <p><%=@doctor_profile.practice_address %></p>
+        <% if current_user.favourites.exists?(doctor_profile_id: @doctor_profile.id) %>
+          <%= button_to "Remove from favourites", doctor_profile_favourite_path(current_user.favourites.find_by(doctor_profile_id: @doctor_profile.id)), method: :delete %>
+        <% else %>
+          <%= button_to "Add to favourites", doctor_profile_favourites_path(doctor_profile_id: @doctor_profile.id), method: :post %>
+        <% end %>
       </div>
     </div>
     <div class="second-wrap">
