@@ -1,0 +1,11 @@
+.wrapper{
+  display: flex;
+
+  .first-wrap{
+    flex: 1;
+  }
+
+  .second-wrap{
+    margin: 0 20px;
+  }
+}

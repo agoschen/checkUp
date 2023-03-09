@@ -33,6 +33,7 @@ end
   def show
     @doctor_profile = DoctorProfile.find(params[:id])
     @doctor_profile_user = User.find(@doctor_profile.user_id)
+    @appointment = Appointment.new
   end
 
   private

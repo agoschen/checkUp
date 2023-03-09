@@ -1,0 +1,29 @@
+.box {
+  width: 500px;
+
+  .form-inputs{
+
+    input {
+      width: 500px;
+      border-radius: none;
+    }
+  }
+  .form-control {
+    border: none;
+    border-bottom: 1px solid grey;
+    border-radius: none;
+    box-shadow: none;
+    cursor: text;
+  }
+
+  .form-control:focus, .form-control:active {
+    border: none;
+    outline: none;
+    border-bottom: 1px solid grey;
+    box-shadow: none;
+  }
+
+  .form-control input.form-check-input{
+    width: 50px;
+  }
+}
