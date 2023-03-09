@@ -429,12 +429,31 @@ appointment24 = Appointment.create!(
 )
 
 puts "User7 = #{user7.first_name}, user id: #{user7.id}, user email: #{user7.email}"
-puts "Doc14 = Dr #{doc_user17.first_name} #{doc_user17.last_name} (#{doc_user_profile14.specialty}), user id: #{doc_user17.id}, dr id: #{doc_user_profile14.id}, email: #{doc_user17.email}"
+puts "Doc14 = Dr #{doc_user14.first_name} #{doc_user14.last_name} (#{doc_user_profile14.specialty}), user id: #{doc_user14.id}, dr id: #{doc_user_profile14.id}, email: #{doc_user14.email}"
 
 puts "Appt24: Date #{appointment24.date}, Appointment id: #{appointment24.id}, Time: #{appointment24.start_time} #{appointment24.end_time}, Adress: #{doc_user_profile14.practice_address}"
 
 puts "COMBO L"
-puts "User: #{user7.first_name}, Dr #{doc_user17.last_name} (#{doc_user_profile14.specialty}), Appointment: Date: #{appointment24.date}, Time: #{appointment24.start_time}, Adress: #{doc_user_profile14.practice_address}"
+puts "User: #{user7.first_name}, Dr #{doc_user14.last_name} (#{doc_user_profile14.specialty}), Appointment: Date: #{appointment24.date}, Time: #{appointment24.start_time}, Adress: #{doc_user_profile14.practice_address}"
+puts "-" * 20
+# +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+# 14,17,25,M
+appointment25 = Appointment.create!(
+  date: "2023-04-25",
+  start_time:  "11:00:00",
+  end_time: "12:00:00",
+  status: true,
+  user_id: doc_user14.id,
+  doctor_profile_id: doc_user_profile17.id
+)
+
+puts "UserDoc14 = #{doc_user14.first_name}, user id: #{doc_user14.id}, user email: #{doc_user14.email}"
+puts "Doc17 = Dr #{doc_user17.first_name} #{doc_user17.last_name} (#{doc_user_profile17.specialty}), user id: #{doc_user17.id}, dr id: #{doc_user_profile17.id}, email: #{doc_user17.email}"
+
+puts "Appt25: Date #{appointment25.date}, Appointment id: #{appointment25.id}, Time: #{appointment25.start_time} #{appointment25.end_time}, Adress: #{doc_user_profile17.practice_address}"
+
+puts "COMBO K"
+puts "User: #{doc_user14.first_name}, Dr #{doc_user17.last_name} (#{doc_user_profile17.specialty}), Appointment: Date: #{appointment25.date}, Time: #{appointment25.start_time}, Adress: #{doc_user_profile14.practice_address}"
 puts "-" * 20
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 puts "So long and thanks for all the Feeeeesh!"
