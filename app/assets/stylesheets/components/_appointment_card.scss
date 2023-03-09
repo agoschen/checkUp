@@ -5,11 +5,14 @@
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   display: flex;
   align-items: center;
+  padding: 4px;
+  border-radius: 4px;
+  margin: 4px;
 }
 
 .card-appointment img {
-  height: 100%;
-  width: 120px;
+  height: 45px%;
+  width: 75%;
   object-fit: cover;
 }
 
@@ -17,6 +20,7 @@
   font-size: 16px;
   font-weight: bold;
   margin: 0;
+  margin: 4px;
 }
 
 .card-appointment p {
@@ -25,8 +29,14 @@
   opacity: .7;
   margin-bottom: 0;
   margin-top: 8px;
+  margin: 4px;
 }
 
 .card-appointment .card-appointment-infos {
   padding: 16px;
+  padding: 4px;
+  border-radius: 4px;
+  margin: 4px;
+  background-color: #7DA39D;
+  
 }
