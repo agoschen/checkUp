@@ -21,7 +21,6 @@ Appointment.destroy_all
 DoctorProfile.destroy_all
 User.destroy_all
 specialty_array = ["Dentist", "Psychologist", "Psychiatrist", "GP", "Dermatologist", "OB/GYN", "Cardiologist", "Opthamologist", "Paediatrician", "Ear, Nose & Throat Specialist"]
-
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 puts "*" * 20
 puts "CREATING DOCTORS, USERS, APPOINTMENTS"
@@ -49,14 +48,14 @@ doc_user2 = User.create!(
   password: '123456'
 )
 
-doc_user_profile2 = DoctorProfile.
-create(
-  photo: "app/assets/images/doc1.png",
+doc_user_profile2 = DoctorProfile.create(
   specialty: specialty_array.sample,
   practice_address: "Claremont, Cape Town",
   # availability: ["Mon 08-09", "Mon 09-10", "Mon 10-11", "Mon 12-13", "Mon 13-14", "Mon 14-15", "Tues 08-09", "Tues 09-10", "Tues 10-11"],
   user_id: doc_user2.id
 )
+file = File.open(File.join(__dir__, 'seed_images/doc1.png'))
+doc_user_profile2.photo.attach(io: file, filename: 'dr pp.png', content_type: 'image/png')
 puts "Doc2 = Dr #{doc_user2.first_name} #{doc_user2.last_name} (#{doc_user_profile2.specialty}), user id: #{doc_user2.id}, dr id: #{doc_user_profile2.id}, email: #{doc_user2.email}"
 
 appointment3 = Appointment.create!(
@@ -94,12 +93,13 @@ doc_user5 = User.create!(
 )
 
 doc_user_profile5 = DoctorProfile.create(
-  photo: "app/assets/images/doc2.png",
   specialty: specialty_array.sample,
   practice_address: "Constantia, Cape Town",
   # availability: ["Mon 08-09", "Mon 09-10", "Mon 10-11", "Mon 12-13", "Mon 13-14", "Mon 14-15", "Tues 08-09", "Tues 09-10", "Tues 10-11"],
   user_id: doc_user5.id
 )
+file = File.open(File.join(__dir__, 'seed_images/doc2.png'))
+doc_user_profile5.photo.attach(io: file, filename: 'dr pp.png', content_type: 'image/png')
 puts "Doc5 = Dr #{doc_user5.first_name} #{doc_user5.last_name} (#{doc_user_profile5.specialty}), user id: #{doc_user5.id}, dr id: #{doc_user_profile5.id}, email: #{doc_user5.email}"
 
 appointment6 = Appointment.create!(
@@ -143,6 +143,8 @@ doc_user_profile8 = DoctorProfile.create(
   # availability: ["Mon 08-09", "Mon 09-10", "Mon 10-11", "Mon 12-13", "Mon 13-14", "Mon 14-15", "Tues 08-09", "Tues 09-10", "Tues 10-11"],
   user_id: doc_user8.id
 )
+file = File.open(File.join(__dir__, 'seed_images/doc3.png'))
+doc_user_profile8.photo.attach(io: file, filename: 'dr pp.png', content_type: 'image/png')
 puts "Doc8 = Dr #{doc_user8.first_name} #{doc_user8.last_name} (#{doc_user_profile8.specialty}), user id: #{doc_user8.id}, dr id: #{doc_user_profile8.id}, email: #{doc_user8.email}"
 
 appointment9 = Appointment.create!(
@@ -183,10 +185,12 @@ doc_user11 = User.create!(
 
 doc_user_profile11 = DoctorProfile.create(
   specialty: specialty_array.sample,
-  practice_address: "Kenilworth, Cape Town",
+  practice_address: "Hout Bay, Cape Town",
   # availability: ["Mon 08-09", "Mon 09-10", "Mon 10-11", "Mon 12-13", "Mon 13-14", "Mon 14-15", "Tues 08-09", "Tues 09-10", "Tues 10-11"],
   user_id: doc_user11.id
 )
+file = File.open(File.join(__dir__, 'seed_images/doc4.png'))
+doc_user_profile11.photo.attach(io: file, filename: 'dr pp.png', content_type: 'image/png')
 puts "Doc8 = Dr #{doc_user11.first_name} #{doc_user11.last_name} (#{doc_user_profile11.specialty}), user id: #{doc_user11.id}, dr id: #{doc_user_profile11.id}, email: #{doc_user11.email}"
 
 appointment12 = Appointment.create!(
@@ -225,10 +229,12 @@ doc_user14 = User.create!(
 
 doc_user_profile14 = DoctorProfile.create(
   specialty: "Sillynessology",
-  practice_address: "Newlands, Cape Town",
+  practice_address: "Camps Bay, Cape Town",
   # availability: "#{appointment15..date.start_time}, appt, date, start time, i think this has to be a seperate table - since then you can access
   user_id: doc_user14.id
 )
+file = File.open(File.join(__dir__, 'seed_images/doc5.png'))
+doc_user_profile14.photo.attach(io: file, filename: 'dr pp.png', content_type: 'image/png')
 puts "Doc14 = Dr #{doc_user14.first_name} #{doc_user14.last_name} (#{doc_user_profile14.specialty}), user id: #{doc_user14.id}, dr id: #{doc_user_profile14.id}, email: #{doc_user14.email}"
 
 appointment15 = Appointment.create!(
@@ -249,7 +255,7 @@ puts "-" * 20
 user16 = User.create!(
   first_name: "Carina",
   last_name: "Coronel",
-  address: "Higgovale, Cape Town",
+  address: "Gardens, Cape Town",
   phone_number: 1234,
   email: "carina@test.com",
   password: '123456'
@@ -271,6 +277,8 @@ doc_user_profile17 = DoctorProfile.create(
   # availability: "#{appointment15..date.start_time}, appt, date, start time, i think this has to be a seperate table - since then you can access
   user_id: doc_user17.id
 )
+file = File.open(File.join(__dir__, 'seed_images/doc6.png'))
+doc_user_profile17.photo.attach(io: file, filename: 'dr pp.png', content_type: 'image/png')
 puts "Doc17 = Dr #{doc_user17.first_name} #{doc_user17.last_name} (#{doc_user_profile17.specialty}), user id: #{doc_user17.id}, dr id: #{doc_user_profile17.id}, email: #{doc_user17.email}"
 
 appointment18 = Appointment.create!(
