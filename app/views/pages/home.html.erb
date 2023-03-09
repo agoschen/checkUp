@@ -26,8 +26,7 @@
         <p class="card-text text-muted mb-2"><strong>Location:</strong> <%= doctor.practice_address %></p>
 
         <hr>
-         <button type="button" class="btn btn-primary">Book Now</button>
-          <%= link_to "Show more...", doctor_profile_path(doctor) %>
+           <%= link_to "View Doctor", doctor_profile_path(doctor), class: "btn btn-primary" %>
                 </div>
       </div>
     </div>
