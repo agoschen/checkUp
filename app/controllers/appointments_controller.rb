@@ -24,14 +24,14 @@ class AppointmentsController < ApplicationController
     # if we do that ^ we will need 2 index files and 2 show pages.
     #   if we can access the current user (variable)save as? - and 'render' different bits of code (variable) - in
     #     the show and indexs pages - then we dont need the additional files.
-    #     the 2 ways I can imagine are loisted below
+    #     the 2 ways I can imagine are listed below
 
     # appointments/:id = the index page params - url.http://localhost:3000/appointments = index ;  http://localhost:3000/appointments/78 = show
 
     # if current_user has a :doc_profile_id
     # OR
     # if appointment_params.includes?(:doc_profile_id)
-    
+
     #   # render :show, dr part of code - to show the records for his appts - many many
     #   # the doctors appointments index - the second one
     #   # <%= render "appointments/form", appointment: @appointment %>
