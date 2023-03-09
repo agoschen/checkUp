@@ -15,12 +15,25 @@ class DoctorProfilesController < ApplicationController
   end
 
   def index
-    @doctor_profiles = DoctorProfile.all
-  end
+    if params[:query].present?
+      @doctor_profiles = DoctorProfile.search_by_specialty(params[:query])
+    else
+      @doctor_profiles = DoctorProfile.all
+    end
+      @markers = @doctor_profiles.geocoded.map do |doctor_profile|
+        {
+          lat: doctor_profile.latitude,
+          lng: doctor_profile.longitude,
+          info_window_html: render_to_string(partial: "info_window", locals: {doctor_profile: doctor_profile}),
+          marker_html: render_to_string(partial: "marker", locals: {doctor_profile: doctor_profile})
+        }
+      end
+end
 
   def show
     @doctor_profile = DoctorProfile.find(params[:id])
     @doctor_profile_user = User.find(@doctor_profile.user_id)
+    @appointment = Appointment.new
   end
 
   private
