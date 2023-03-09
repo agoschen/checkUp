@@ -3,4 +3,9 @@
 <h1>Book an appointment with Dr. <%= @doctor_profile_user.last_name %> </h1>
 
 <%= render "appointments/form", appointment: @appointment %>
+
 <%= link_to "Go back home", root_path %>
+
+
+<%# my feeling is - this should not be a page. you should be able to select an appt
+from a dr profile page - which indicates their availability by the way of slots (an array) %>

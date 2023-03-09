@@ -3,6 +3,7 @@ class AppointmentsController < ApplicationController
 
   def index
     @appointments = Appointment.where(user_id: current_user)
+    @doctor_appointments = Appointment.where(doctor_profile_id: current_user.doctor_profile.id)
   end
 
   def create
