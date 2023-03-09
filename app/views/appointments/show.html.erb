@@ -16,7 +16,7 @@
 
 <br>
 <%# if patient %>
-
+<%# <%= render the below appointment: @appointment %> %>
 <%# change the div to show only one once you are done with the styling params %>
 <div class="card-appointment">
   <div class="card-appointment-infos">
@@ -31,7 +31,7 @@
   </div>
 </div>
 
-
+<h3>********************************** ^^ Patient ^^ **********************************</h3>
 <%# if doctor  %>
 <div class="card-appointment">
   <div class="card-appointment-infos">
@@ -46,7 +46,7 @@
 <%# special notes being an input when the user books.  we dont have a form input for patients booking an appt-  %>
   </div>
 </div>
-
+<h3>********************************** ^^ Doctor ^^ **********************************</h3>
 <%#
 not sure if anyone wants to add the user contact details here - for a reschedule or cancel option?
   <div class="card-appointment-contact">
