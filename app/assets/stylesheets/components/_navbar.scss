@@ -1,6 +1,15 @@
-.navbar-lewagon {
+.navbar{
+  display: flex;
+  align-items: center;
   justify-content: space-between;
   background: white;
+  p.logo{
+    font-size: 25px;
+    letter-spacing: 2px;
+    font-weight: 600;
+    color: #1A4741;
+    padding: 0;
+    margin: 0;  }
 }
 
 .navbar-lewagon .navbar-collapse {

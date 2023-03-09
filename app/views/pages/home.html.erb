@@ -1,25 +1,44 @@
-<div class="container">
-<div class="row justify-content-center">
-    <div class="col-sm-8">
-      <%= form_with method: :get, class: "d-flex" do %>
-        <%= text_field_tag :query,
-          params[:query],
-          class: "form-control",
-          placeholder: "Find a doctor"
-        %>
-        <%= submit_tag "Search", class: "btn btn-primary" %>
-      <% end %>
+<div class="banner">
+  <div class="container">
+    <div class="">
+      <h1>Find the right
+        <br />
+        healthcare provider
+        <br />
+        for you
+      </h1>
     </div>
+      <div class="search-bar">
+        <%= form_with method: :get, class: "search" do %>
+          <%= text_field_tag :query,
+            params[:query],
+            class: "form-control",
+            placeholder: "Specialty"
+          %>
+          <%= text_field_tag :query,
+            params[:query],
+            class: "form-control",
+            placeholder: "Location"
+          %>
+          <%= submit_tag "Search", class: "button", type: 'submit' %>
+        <% end %>
+      </div>
   </div>
+</div>
+
+
+<div class="container">
 
 <div class="row mt-10" >
   <div class="col-md-6">
    <% @doctor_profiles.each do |doctor|%>
     <div class="col-md-6">
     <div class="card mb-3">
-      <%= image_tag "doc1.png", class: "card-img-top img-fluid rounded ", alt: "Doctor Image" %>
-
-
+    <% if doctor.photo.attached? %>
+      <%= cl_image_tag doctor.photo.key, class: "card-img-top img-fluid rounded ", alt: "Doctor Image" %>
+      <% else %>
+        <%= image_tag "blank-profile-circle.png", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+      <% end %>
             <div class="card-body">
         <h5 class="card-title mb-1">Dr. <%= doctor.user.first_name %> <%= doctor.user.last_name %></h5>
         <p class="card-text text-muted mb-2"><strong>Specialty:</strong> <%= doctor.specialty %></p>

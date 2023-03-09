@@ -1,7 +1,12 @@
-input, input[type = "submit"] {
+input {
   padding: 10px 20px;
-  cursor: pointer;
   border: none;
+}
+
+input[type = "submit"]{
+  cursor: pointer;
+  background-color: #1A4741;
+  color: #BFDDD9;
 }
 
 input:focus
