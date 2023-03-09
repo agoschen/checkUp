@@ -8,7 +8,7 @@
     </div>
   <% end %>
 
-  
+
 
 <nav class="navbar navbar-expand-md navbar-light bg-light">
   <a class="navbar-brand" href="#">My Website</a>
@@ -34,14 +34,14 @@
   <div class="col-md-6">
    <% @doctor_profiles.each do |doctor|%>
     <div class="card mb-3">
-      <%= image_tag "doc1.jpg", class: "card-img-top img-fluid rounded ", alt: "Doctor Image" %>
-            <div class="card-body">
+      <%= image_tag "doc1.jpg", class: "avatar", alt: "Doctor" %>
+        <div class="card-body">
         <h5 class="card-title mb-1">Dr. <%= doctor.user.first_name %> <%= doctor.user.last_name %></h5>
         <p class="card-text text-muted mb-2"><strong>Specialty:</strong> <%= doctor.specialty %></p>
         <p class="card-text text-muted mb-2"><strong>Location:</strong> <%= doctor.practice_address %></p>
         <hr>
-         <button type="button" class="btn btn-primary">Book Now</button>
-          <%= link_to "Show more...", doctor_profile_path(doctor) %>
+         <button type="button" class="button">Book Now</button>
+          <%= link_to "Show more...", doctor_profile_path(doctor), class: "link" %>
       </div>
     </div>
      <% end %>
