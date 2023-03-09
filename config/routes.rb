@@ -7,8 +7,8 @@ Rails.application.routes.draw do
   # root "articles#index"
 
   resources :doctor_profiles, only: [ :index, :show, :new, :create] do
-    resources :appointments, only: [ :new, :create ]
+    resources :appointments, only: [ :create, :index, :show]
   end
 
-  resources :appointments, only: [ :index, :show ]
+  resources :appointments, only: [ :index, :show, :create ]
 end
