@@ -1,6 +1,6 @@
 .wrapper{
   display: flex;
-
+  padding-top: 100px;
   .first-wrap{
     flex: 1;
   }
@@ -8,4 +8,10 @@
   .second-wrap{
     margin: 0 20px;
   }
+}
+
+.main-wrapper{
+  display: flex;
+  flex-direction: column;
+  padding-top: 100px;
 }

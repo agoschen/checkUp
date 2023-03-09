@@ -12,51 +12,5 @@
       font-weight: 600;
       color: #1A4741;
     }
-
-    .search-bar{
-      background-color: white;
-      display: flex;
-      border-radius: 15px;
-      flex: 1;
-      place-self: end;
-      align-self: flex-end;
-
-      .search {
-        display: flex;
-        width: 100%;
-      }
-      input[type = "submit"]{
-        cursor: pointer;
-        background-color: #1A4741;
-        color: #BFDDD9;
-        border-top-right-radius: 15px;
-        border-bottom-right-radius: 15px;
-      }
-    }
-
-    input::placeholder{
-      font-size: 20px;
-    }
-
-    input[type="text"]:focus{
-      outline: none;
-      box-shadow: none;
-      border: none;
-    }
-
-    input[type="text"]{
-      height: 50px;
-      padding: 20px;
-      outline: none;
-      border: none;
-      border-radius: 15px;
-    }
-
-    input:nth-child(2)::placeholder{
-      border-radius: 0px;
-      border-left: 1px solid grey;
-      padding-left: 20px;
-    }
-
   }
 }
