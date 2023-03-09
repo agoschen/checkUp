@@ -1,6 +1,8 @@
-<p style="color: green"><%= notice %></p>
+<div class="container">
+  <p style="color: green"><%= notice %></p>
 
-<h1>Register as a doctor</h1>
+  <h1>Register as a doctor</h1>
 
-<%= render "doctor_profiles/form", doctor_profile: @doctor_profile %>
-<%= link_to "Go back to all doctors", doctor_profiles_path %>
+  <%= render "doctor_profiles/form", doctor_profile: @doctor_profile %>
+  <%= link_to "Go back to all doctors", doctor_profiles_path %>
+</div>
