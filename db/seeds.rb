@@ -457,11 +457,3 @@ puts "User: #{doc_user14.first_name}, Dr #{doc_user17.last_name} (#{doc_user_pro
 puts "-" * 20
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 puts "So long and thanks for all the Feeeeesh!"
-
-
-
-# UserDoc14 = Ricky, user id: 1193, user email: ricky@test.com
-# Doc17 = Dr Shirley Mentz (Underarms), user id: 1195, dr id: 587, email: shirley@test.com
-# Appt25: Date 2023-04-25, Appointment id: 114, Time: 2000-01-01 11:00:00 UTC 2000-01-01 12:00:00 UTC, Adress: 18 Cat, Edgemead
-# COMBO K
-# User: Ricky, Dr Mentz (Underarms), Appointment: Date: 2023-04-25, Time: 2000-01-01 11:00:00 UTC, Adress: 15 Dog, Newlands
