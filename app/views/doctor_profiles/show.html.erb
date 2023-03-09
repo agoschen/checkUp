@@ -2,7 +2,11 @@
 
   <div class="wrapper">
     <div class="card-product first-wrap">
-      <img src="https://xsgames.co/randomusers/avatar.php?g=male", class="avatar-large">
+    <% if @doctor_profile.photo.attached? %>
+      <%= cl_image_tag @doctor_profile.photo.key, class:"avatar-large"%>
+    <% else %>
+      <%= image_tag "blank-profile-circle.png", class:"avatar-large" %>
+    <% end %>
       <div class="card-product-infos">
         <h2><%=@doctor_profile.user.first_name %></h2>
         <p><%=@doctor_profile.specialty %></p>

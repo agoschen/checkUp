@@ -34,8 +34,12 @@
    <% @doctor_profiles.each do |doctor|%>
     <div class="col-md-6">
     <div class="card mb-3">
-      <%= image_tag "doc1.jpg", class: "card-img-top img-fluid rounded ", alt: "Doctor Image" %>
-        <div class="card-body">
+    <% if doctor.photo.attached? %>
+      <%= cl_image_tag doctor.photo.key, class: "card-img-top img-fluid rounded ", alt: "Doctor Image" %>
+      <% else %>
+        <%= image_tag "blank-profile-circle.png", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+      <% end %>
+            <div class="card-body">
         <h5 class="card-title mb-1">Dr. <%= doctor.user.first_name %> <%= doctor.user.last_name %></h5>
         <p class="card-text text-muted mb-2"><strong>Specialty:</strong> <%= doctor.specialty %></p>
         <p class="card-text text-muted mb-2"><strong>Location:</strong> <%= doctor.practice_address %></p>
