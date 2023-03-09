@@ -1,14 +1,16 @@
+    <h3> Logged in as:<%= current_user.first_name %> </h3>
+      <p> user id: = <%= current_user.id  %> </p>
+      <%# can delete the logged in as details before completion %>
 
 <div class="container">
 
   <h1> My Appointments </h1>
-<%# can delete the logged in as details before completion %>
-    <h3> Logged in as:<%= current_user.first_name %> </h3>
-      <p> user id: = <%= current_user.id  %> </p>
 
-
-  <%# if patient  %>
-  <ol>
+  <% if @appointments.empty? %>
+  <h2>Upcoming appointments with Doctors: </h2>
+    <h3>You have no upcoming appoinments</h3>
+ <% else  %>
+  <h2>Upcoming appointments with Doctors: </h2>
     <% @appointments.each do |appointment|%>
       <%= link_to appointment_path(appointment) do %>
         <div class="card-appointment">
@@ -27,34 +29,32 @@
         </div>
         <% end %>
       <% end %>
-    </div>
+<% end %>
 
-</div>
-
-
-
-<%# if doctor %>
-
-
-
-<ol>
-  <% @appointments.each do |appointment|%>
-    <%= link_to appointment_path(appointment) do %>
-      <div class="card-appointment">
-        <img src="https://xsgames.co/randomusers/avatar.php?g=male" />
-        <%# this image source should totally be from the dr_users_profile pic - linked - not static to this card %>
-        <div class="card-appointment-infos">
-          <h2>With Patient <%= appointment.user.first_name%> <%= appointment.user.last_name%></h2>
-          <%# " With Patient appointment.user.first_name and appointment.user.last_name, for appointment.special_notes "" %>
-            <p>Appointment date: <%= appointment.date %></p>
-            <p>Appointment time: <%= appointment.start_time %></p>
-            <%# not needing address here  %>
+ <% if @doctor_appointments.empty? %>
+  <h2>Upcoming appointments with Patients: </h2>
+    <h3>You have no upcoming appoinments</h3>
+ <% else  %>
+  <h2>Upcoming appointments with patients: </h2>
+    <% @doctor_appointments.each do |appointment|%>
+      <%= link_to appointment_path(appointment) do %>
+        <div class="card-appointment">
+          <img src="https://xsgames.co/randomusers/avatar.php?g=male" />
+          <%# this image source should totally be from the dr_users_profile pic - linked - not static to this card %>
+          <div class="card-appointment-infos">
+            <h2>With Patient <%= appointment.user.first_name%> <%= appointment.user.last_name%></h2>
+            <%# " With Patient appointment.user.first_name and appointment.user.last_name, for appointment.special_notes "" %>
+              <p>Appointment date: <%= appointment.date %></p>
+              <p>Appointment time: <%= appointment.start_time %></p>
+              <%# not needing address here  %>
+          </div>
+          <div class="card-appointment-contact">
+              <h6>email: <%= appointment.user.email%></h6>
+              <h6>Phone no : <%= appointment.user.phone_number%></h6>
+          </div>
         </div>
-        <div class="card-appointment-contact">
-            <h6>email: <%= appointment.user.email%></h6>
-            <h6>Phone no : <%= appointment.user.phone_number%></h6>
-        </div>
-
-      </div>
+        <% end %>
       <% end %>
-    <% end %>
+    </div>
+  <% end %>
+</div>

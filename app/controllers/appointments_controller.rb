@@ -19,28 +19,7 @@ class AppointmentsController < ApplicationController
 
   def index
     @appointments = Appointment.where(user_id: current_user)
-    # there are 3 ways I can think of we can solve this.
-    # 1. we make 2 def index_1_user, def index_2_dr
-    # if we do that ^ we will need 2 index files and 2 show pages.
-    #   if we can access the current user (variable)save as? - and 'render' different bits of code (variable) - in
-    #     the show and indexs pages - then we dont need the additional files.
-    #     the 2 ways I can imagine are listed below
-
-    # appointments/:id = the index page params - url.http://localhost:3000/appointments = index ;  http://localhost:3000/appointments/78 = show
-
-    # if current_user has a :doc_profile_id
-    # OR
-    # if appointment_params.includes?(:doc_profile_id)
-
-    #   # render :show, dr part of code - to show the records for his appts - many many
-    #   # the doctors appointments index - the second one
-    #   # <%= render "appointments/form", appointment: @appointment %>
-
-    # else
-    #   # render :show, patient  part of code - to show the records for his appts - fewer
-    # # if current_user doc_profile_id: ?
-    # # if current_user != doc_profile_id
-  # end
+    @doctor_appointments = Appointment.where(doctor_profile_id: current_user.doctor_profile.id)
   end
 
   def show
