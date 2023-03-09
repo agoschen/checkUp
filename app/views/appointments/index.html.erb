@@ -9,6 +9,7 @@
   <% if @appointments.empty? %>
   <h2>Upcoming appointments with Doctors: </h2>
     <h3>You have no upcoming appoinments</h3>
+    <p>****************************************************************************</p>
  <% else  %>
   <h2>Upcoming appointments with Doctors: </h2>
     <% @appointments.each do |appointment|%>
@@ -35,7 +36,7 @@
   <h2>Upcoming appointments with Patients: </h2>
     <h3>You have no upcoming appoinments</h3>
  <% else  %>
-  <h2>Upcoming appointments with patients: </h2>
+  <h2>Upcoming appointments with Patients: </h2>
     <% @doctor_appointments.each do |appointment|%>
       <%= link_to appointment_path(appointment) do %>
         <div class="card-appointment">
@@ -46,7 +47,6 @@
             <%# " With Patient appointment.user.first_name and appointment.user.last_name, for appointment.special_notes "" %>
               <p>Appointment date: <%= appointment.date %></p>
               <p>Appointment time: <%= appointment.start_time %></p>
-              <%# not needing address here  %>
           </div>
           <div class="card-appointment-contact">
               <h6>email: <%= appointment.user.email%></h6>
