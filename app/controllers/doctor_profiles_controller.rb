@@ -20,15 +20,15 @@ class DoctorProfilesController < ApplicationController
     else
       @doctor_profiles = DoctorProfile.all
     end
-      @markers = @doctor_profiles.geocoded.map do |doctor_profile|
-        {
-          lat: doctor_profile.latitude,
-          lng: doctor_profile.longitude,
-          info_window_html: render_to_string(partial: "info_window", locals: {doctor_profile: doctor_profile}),
-          marker_html: render_to_string(partial: "marker", locals: {doctor_profile: doctor_profile})
-        }
-      end
-end
+    @markers = @doctor_profiles.geocoded.map do |doctor_profile|
+      {
+        lat: doctor_profile.latitude,
+        lng: doctor_profile.longitude,
+        info_window_html: render_to_string(partial: "info_window", locals: {doctor_profile: doctor_profile}),
+        marker_html: render_to_string(partial: "marker", locals: {doctor_profile: doctor_profile})
+      }
+    end
+  end
 
   def show
     @doctor_profile = DoctorProfile.find(params[:id])
@@ -39,6 +39,6 @@ end
   private
 
   def doctor_params
-    params.require(:doctor_profile).permit(:specialty, :practice_address, :availability, :user_id)
+    params.require(:doctor_profile).permit(:specialty, :practice_address, :availability, :photo, :user_id)
   end
 end

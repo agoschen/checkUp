@@ -6,6 +6,7 @@ class DoctorProfile < ApplicationRecord
   has_many :users, through: :appointments, dependent: :destroy
   validates :specialty, presence: true
   validates :practice_address, presence: true
+  has_one_attached :photo
 
   include PgSearch::Model
   pg_search_scope :search_by_specialty,

@@ -12,7 +12,7 @@
 <div class="container">
   <h3> Appointment details: </h3>
 
-<% if @appointment.doctor_profile_id == current_user.doctor_profile.id %>
+<% if current_user.doctor_profile %>
 <div class="card-appointment">
 
   <div class="card-appointment-infos">

@@ -20,46 +20,7 @@ puts "-" * 20
 Appointment.destroy_all
 DoctorProfile.destroy_all
 User.destroy_all
-
-puts "-" * 20
-puts "And CREATING PROFILES..."
-puts "-" * 20
-
-15.times do
-  user = User.create!(
-    first_name: Faker::Superhero.name,
-    last_name: Faker::Name.last_name,
-    address: Faker::Address.full_address,
-    phone_number: Faker::PhoneNumber.phone_number,
-    email: Faker::Internet.email,
-    password: '123456'
-    )
-  p "User name: #{user[:first_name]}, user id: #{user.id}, email: #{user.email}."
-  end
-
-
-15.times do
-  user = User.create!(
-    first_name: Faker::Name.first_name,
-    last_name: Faker::Name.last_name,
-    address: Faker::Address.full_address,
-    phone_number: Faker::PhoneNumber.phone_number,
-    email: Faker::Internet.email,
-    password: '123456'
-    )
-  doctor_profile = DoctorProfile.create!(
-    # we can maybe add a link to their profile pics in here ?
-    specialty: Faker::Emotion.noun,
-    practice_address: Faker::Address.full_address,
-    availability: Faker::Date.between(from: 1.year.ago, to: 1.year.from_now),
-    user_id: user.id
-  )
-  p "Doc name: Dr #{user.last_name}, (#{doctor_profile.specialty}), user id: #{user.id}, dr_profile id: #{doctor_profile.id}, email: #{user.email}."
-end
-
-puts "-" * 20
-puts "done creating Profiles"
-puts "-" * 20
+specialty_array = ["Dentist", "Psychologist", "Psychiatrist", "GP", "Dermatologist", "OB/GYN", "Cardiologist", "Opthamologist", "Paediatrician", "Ear, Nose & Throat Specialist"]
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 puts "*" * 20
 puts "CREATING DOCTORS, USERS, APPOINTMENTS"
@@ -71,7 +32,7 @@ puts "*" * 20
 user1 = User.create!(
   first_name: "Mike",
   last_name: "Wells",
-  address: "1 Rooster, Vredehoek",
+  address: "Vredehoek, Cape Town",
   phone_number: 1234,
   email: "mike@test.com",
   password: '123456'
@@ -81,18 +42,20 @@ puts "User1 = #{user1.first_name}, user id: #{user1.id}, user email: #{user1.ema
 doc_user2 = User.create!(
   first_name: "James",
   last_name: "Keller",
-  address: "2 Badger, Salt River",
+  address: "Salt River, Cape Town",
   email: "james@test.com",
   phone_number: 1234,
   password: '123456'
 )
 
 doc_user_profile2 = DoctorProfile.create(
-  specialty: "Scrota",
-  practice_address: "3 Fox, Claremont",
+  specialty: specialty_array.sample,
+  practice_address: "Claremont, Cape Town",
   # availability: ["Mon 08-09", "Mon 09-10", "Mon 10-11", "Mon 12-13", "Mon 13-14", "Mon 14-15", "Tues 08-09", "Tues 09-10", "Tues 10-11"],
   user_id: doc_user2.id
 )
+file = File.open(File.join(__dir__, 'seed_images/doc1.png'))
+doc_user_profile2.photo.attach(io: file, filename: 'dr pp.png', content_type: 'image/png')
 puts "Doc2 = Dr #{doc_user2.first_name} #{doc_user2.last_name} (#{doc_user_profile2.specialty}), user id: #{doc_user2.id}, dr id: #{doc_user_profile2.id}, email: #{doc_user2.email}"
 
 appointment3 = Appointment.create!(
@@ -113,7 +76,7 @@ puts "-" * 20
 user4 = User.create!(
   first_name: "Sarah",
   last_name: "Frost",
-  address: "4 Chicken, Gardens",
+  address: "Gardens, Cape Town",
   phone_number: 1234,
   email: "sarah@test.com",
   password: '123456'
@@ -123,18 +86,20 @@ puts "User4 = #{user4.first_name}, user id: #{user4.id}, user email: #{user4.ema
 doc_user5 = User.create!(
   first_name: "Hankey",
   last_name: "Panki",
-  address: "5 Elephant, Sea Point",
+  address: "Sea Point, Cape Town",
   email: "hankey@test.com",
   phone_number: 1234,
   password: '123456'
 )
 
 doc_user_profile5 = DoctorProfile.create(
-  specialty: "Brains",
-  practice_address: "6 Cattle, Constantia",
+  specialty: specialty_array.sample,
+  practice_address: "Constantia, Cape Town",
   # availability: ["Mon 08-09", "Mon 09-10", "Mon 10-11", "Mon 12-13", "Mon 13-14", "Mon 14-15", "Tues 08-09", "Tues 09-10", "Tues 10-11"],
   user_id: doc_user5.id
 )
+file = File.open(File.join(__dir__, 'seed_images/doc2.png'))
+doc_user_profile5.photo.attach(io: file, filename: 'dr pp.png', content_type: 'image/png')
 puts "Doc5 = Dr #{doc_user5.first_name} #{doc_user5.last_name} (#{doc_user_profile5.specialty}), user id: #{doc_user5.id}, dr id: #{doc_user_profile5.id}, email: #{doc_user5.email}"
 
 appointment6 = Appointment.create!(
@@ -156,7 +121,7 @@ puts "-" * 20
 user7 = User.create!(
   first_name: "Greg",
   last_name: "Makkie",
-  address: "7 Duck, Vredehoek",
+  address: "Vredehoek, Cape Town",
   phone_number: 1234,
   email: "greg@test.com",
   password: '123456'
@@ -166,18 +131,20 @@ puts "User7 = #{user7.first_name}, user id: #{user7.id}, user email: #{user7.ema
 doc_user8 = User.create!(
   first_name: "Kate",
   last_name: "Marx",
-  address: "8 Lion, Greenpoint",
+  address: "Greenpoint, Cape Town",
   email: "kate@test.com",
   phone_number: 1234,
   password: '123456'
 )
 
 doc_user_profile8 = DoctorProfile.create(
-  specialty: "Kids",
-  practice_address: "9 Horse, Edgemead",
+  specialty: specialty_array.sample,
+  practice_address: "Edgemead, Cape Town",
   # availability: ["Mon 08-09", "Mon 09-10", "Mon 10-11", "Mon 12-13", "Mon 13-14", "Mon 14-15", "Tues 08-09", "Tues 09-10", "Tues 10-11"],
   user_id: doc_user8.id
 )
+file = File.open(File.join(__dir__, 'seed_images/doc3.png'))
+doc_user_profile8.photo.attach(io: file, filename: 'dr pp.png', content_type: 'image/png')
 puts "Doc8 = Dr #{doc_user8.first_name} #{doc_user8.last_name} (#{doc_user_profile8.specialty}), user id: #{doc_user8.id}, dr id: #{doc_user_profile8.id}, email: #{doc_user8.email}"
 
 appointment9 = Appointment.create!(
@@ -200,7 +167,7 @@ puts "-" * 20
 user10 = User.create!(
   first_name: "Salma",
   last_name: "Periola",
-  address: " Frog, 10 Snake, Camps Bay",
+  address: "Camps Bay, Cape Town",
   phone_number: 1234,
   email: "salma@test.com",
   password: '123456'
@@ -210,18 +177,20 @@ puts "User10 = #{user10.first_name}, user id: #{user10.id}, user email: #{user10
 doc_user11 = User.create!(
   first_name: "Henry",
   last_name: "Harriet",
-  address: "11 Hawk, Hout Bay",
+  address: "Hout Bay, Cape Town",
   email: "henry@test.com",
   phone_number: 1234,
   password: '123456'
 )
 
 doc_user_profile11 = DoctorProfile.create(
-  specialty: "Histerics",
-  practice_address: "12 Hen, Hartlyvale",
+  specialty: specialty_array.sample,
+  practice_address: "Hout Bay, Cape Town",
   # availability: ["Mon 08-09", "Mon 09-10", "Mon 10-11", "Mon 12-13", "Mon 13-14", "Mon 14-15", "Tues 08-09", "Tues 09-10", "Tues 10-11"],
   user_id: doc_user11.id
 )
+file = File.open(File.join(__dir__, 'seed_images/doc4.png'))
+doc_user_profile11.photo.attach(io: file, filename: 'dr pp.png', content_type: 'image/png')
 puts "Doc8 = Dr #{doc_user11.first_name} #{doc_user11.last_name} (#{doc_user_profile11.specialty}), user id: #{doc_user11.id}, dr id: #{doc_user_profile11.id}, email: #{doc_user11.email}"
 
 appointment12 = Appointment.create!(
@@ -242,7 +211,7 @@ puts "-" * 20
 user13 = User.create!(
   first_name: "Neil",
   last_name: "Square",
-  address: "13 Eel, Llundudno",
+  address: "Durbanville, Cape Town",
   phone_number: 1234,
   email: "neil@test.com",
   password: '123456'
@@ -252,7 +221,7 @@ puts "User13 = #{user13.first_name}, user id: #{user13.id}, user email: #{user13
 doc_user14 = User.create!(
   first_name: "Ricky",
   last_name: "Bobby",
-  address: "14 Eagle, Stellenbosch",
+  address: "Rondebosch, Cape Town",
   email: "ricky@test.com",
   phone_number: 1234,
   password: '123456'
@@ -260,10 +229,12 @@ doc_user14 = User.create!(
 
 doc_user_profile14 = DoctorProfile.create(
   specialty: "Sillynessology",
-  practice_address: "15 Dog, Newlands",
+  practice_address: "Camps Bay, Cape Town",
   # availability: "#{appointment15..date.start_time}, appt, date, start time, i think this has to be a seperate table - since then you can access
   user_id: doc_user14.id
 )
+file = File.open(File.join(__dir__, 'seed_images/doc5.png'))
+doc_user_profile14.photo.attach(io: file, filename: 'dr pp.png', content_type: 'image/png')
 puts "Doc14 = Dr #{doc_user14.first_name} #{doc_user14.last_name} (#{doc_user_profile14.specialty}), user id: #{doc_user14.id}, dr id: #{doc_user_profile14.id}, email: #{doc_user14.email}"
 
 appointment15 = Appointment.create!(
@@ -284,7 +255,7 @@ puts "-" * 20
 user16 = User.create!(
   first_name: "Carina",
   last_name: "Coronel",
-  address: "16 Bird, Higgovale",
+  address: "Gardens, Cape Town",
   phone_number: 1234,
   email: "carina@test.com",
   password: '123456'
@@ -294,18 +265,20 @@ puts "User16 = #{user16.first_name}, user id: #{user16.id}, user email: #{user16
 doc_user17 = User.create!(
   first_name: "Shirley",
   last_name: "Mentz",
-  address: "17 Crickets, Somerset West",
+  address: "Hout Bay, Cape Town",
   email: "shirley@test.com",
   phone_number: 1234,
   password: '123456'
 )
 
 doc_user_profile17 = DoctorProfile.create(
-  specialty: "Underarms",
-  practice_address: "18 Cat, Edgemead",
+  specialty: specialty_array.sample,
+  practice_address: "Milnerton, Cape Town",
   # availability: "#{appointment15..date.start_time}, appt, date, start time, i think this has to be a seperate table - since then you can access
   user_id: doc_user17.id
 )
+file = File.open(File.join(__dir__, 'seed_images/doc6.png'))
+doc_user_profile17.photo.attach(io: file, filename: 'dr pp.png', content_type: 'image/png')
 puts "Doc17 = Dr #{doc_user17.first_name} #{doc_user17.last_name} (#{doc_user_profile17.specialty}), user id: #{doc_user17.id}, dr id: #{doc_user_profile17.id}, email: #{doc_user17.email}"
 
 appointment18 = Appointment.create!(
@@ -456,4 +429,47 @@ puts "COMBO K"
 puts "User: #{doc_user14.first_name}, Dr #{doc_user17.last_name} (#{doc_user_profile17.specialty}), Appointment: Date: #{appointment25.date}, Time: #{appointment25.start_time}, Adress: #{doc_user_profile14.practice_address}"
 puts "-" * 20
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+#########################################################################################################################
+# puts "-" * 20
+# puts "And CREATING PROFILES..."
+# puts "-" * 20
+
+# 15.times do
+#   user = User.create!(
+#     first_name: Faker::Name.first_name,
+#     last_name: Faker::Name.last_name,
+#     address: Faker::Address.full_address,
+#     phone_number: Faker::PhoneNumber.phone_number,
+#     email: Faker::Internet.email,
+#     password: '123456'
+#     )
+#   p "User name: #{user[:first_name]}, user id: #{user.id}, email: #{user.email}."
+#   end
+
+
+# 15.times do
+#   user = User.create!(
+#     first_name: Faker::Name.first_name,
+#     last_name: Faker::Name.last_name,
+#     address: Faker::Address.full_address,
+#     phone_number: Faker::PhoneNumber.phone_number,
+#     email: Faker::Internet.email,
+#     password: '123456'
+#     )
+#   doctor_profile = DoctorProfile.create!(
+#     # we can maybe add a link to their profile pics in here ?
+#     specialty: Faker::Emotion.noun,
+#     practice_address: Faker::Address.full_address,
+#     availability: Faker::Date.between(from: 1.year.ago, to: 1.year.from_now),
+#     user_id: user.id
+#   )
+#   p "Doc name: Dr #{user.last_name}, (#{doctor_profile.specialty}), user id: #{user.id}, dr_profile id: #{doctor_profile.id}, email: #{user.email}."
+# end
+
+# puts "-" * 20
+# puts "done creating Profiles"
+# puts "-" * 20
+
+#########################################################################################################################
 puts "So long and thanks for all the Feeeeesh!"
