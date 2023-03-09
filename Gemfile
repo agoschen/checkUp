@@ -79,5 +79,13 @@ end
 gem "devise"
 
 gem "faker"
+gem "geocoder"
 
 gem "cloudinary"
+
+gem "pg_search", "~> 2.3"
+
+gem "momentjs-rails"
+
+gem "simple_calendar"
+
