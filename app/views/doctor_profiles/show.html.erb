@@ -1,17 +1,29 @@
 <div class="container">
-<h1><%=@doctor_profile_user.first_name %></h1>
-
-
-<div class="card-product">
-  <img src="https://xsgames.co/randomusers/avatar.php?g=male"> <%# @doctor_profile.img_uploaded = link to - file upload from when dr registers - now that cloudinary is working ? %>
-  <div class="card-product-infos">
-    <h2><%=@doctor_profile_user.first_name %></h2>
-    <p><strong><%=@doctor_profile.specialty %></strong> .</p>
-    <p><p><%=@doctor_profile_user.phone_number %></p></p>
-    <p><%=@doctor_profile.practice_address %></p>
-    <%= link_to "Book appointment", new_doctor_profile_appointment_path(@doctor_profile) %>
+  <h1><%=@doctor_profile.specialty %></h1>
+  <h1><%=@doctor_profile.user.first_name %></h1>
+  <h1><%=@doctor_profile.practice_address %></h1>
+  <div class="wrapper">
+    <div class="card-product first-wrap">
+      <img src="https://xsgames.co/randomusers/avatar.php?g=male">
+      <div class="card-product-infos">
+        <h2><%=@doctor_profile.user.first_name %></h2>
+        <p><%=@doctor_profile.specialty %></p>
+        <p><%=@doctor_profile.user.phone_number %></p>
+        <p><%=@doctor_profile.practice_address %></p>
+      </div>
+    </div>
+    <div class="second-wrap">
+      <%= simple_form_for [@doctor_profile, @appointment] do |f| %>
+        <%= f.input :date, label: 'Date' %>
+        <%= f.input :start_time, label: 'Start_time' %>
+        <%= f.input :end_time, label: 'End_time' %>
+        <%= f.input :note, label: 'Reason for appointment' %>
+        <%= f.button :submit, class:"btn btn-secondary" %>
+      <% end %>
+    </div>
   </div>
-</div>
-
-
+  <div class="">
+    <%= month_calendar do |date| %>
+      <%= date %>
+    <% end %>
 </div>
