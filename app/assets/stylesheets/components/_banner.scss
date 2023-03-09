@@ -3,7 +3,7 @@
   background-color: #BFDDD9;
   display: flex;
   align-items: center;
-
+  margin-bottom: 50px;
   .container{
     display: flex;
     gap: 100px;
@@ -25,6 +25,13 @@
         display: flex;
         width: 100%;
       }
+      input[type = "submit"]{
+        cursor: pointer;
+        background-color: #1A4741;
+        color: #BFDDD9;
+        border-top-right-radius: 15px;
+        border-bottom-right-radius: 15px;
+      }
     }
 
     input::placeholder{
@@ -45,9 +52,10 @@
       border-radius: 15px;
     }
 
-    input::placeholder:nth-child(2){
+    input:nth-child(2)::placeholder{
       border-radius: 0px;
       border-left: 1px solid grey;
+      padding-left: 20px;
     }
 
   }

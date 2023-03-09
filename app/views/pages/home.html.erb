@@ -28,33 +28,31 @@
 
 
 <div class="container">
-
-<div class="row mt-10" >
-  <div class="col-md-6">
-   <% @doctor_profiles.each do |doctor|%>
+  <div class="" >
+    <div class="card-grid">
+    <% @doctor_profiles.each do |doctor|%>
+      <div class="home">
+      <div class="">
+        <%= image_tag "doc1.jpg", class: "avatar-medium", alt: "Doctor Image" %>
+          <div class="card-body">
+          <h5 class="name">Dr. <%= doctor.user.first_name %> <%= doctor.user.last_name %></h5>
+          <p class="specialty"><%= doctor.specialty %></p>
+          <p class="address"><%= doctor.practice_address %></p>
+          <hr>
+            <%= link_to "View Doctor", doctor_profile_path(doctor), class: "button" %>
+            </div>
+        </div>
+      </div>
+      <% end %>
+    </div>
     <div class="col-md-6">
-    <div class="card mb-3">
-      <%= image_tag "doc1.jpg", class: "card-img-top img-fluid rounded ", alt: "Doctor Image" %>
-        <div class="card-body">
-        <h5 class="card-title mb-1">Dr. <%= doctor.user.first_name %> <%= doctor.user.last_name %></h5>
-        <p class="card-text text-muted mb-2"><strong>Specialty:</strong> <%= doctor.specialty %></p>
-        <p class="card-text text-muted mb-2"><strong>Location:</strong> <%= doctor.practice_address %></p>
-
-        <hr>
-           <%= link_to "View Doctor", doctor_profile_path(doctor), class: "btn btn-primary" %>
-                </div>
+      <div id="map sticky-top">
+      <div style="width: 100%; height: 600px;"
+    data-controller="map"
+    data-map-markers-value="<%= @markers.to_json %>"
+    data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+  </div>
       </div>
     </div>
-     <% end %>
   </div>
-  <div class="col-md-6">
-    <div id="map sticky-top">
-    <div style="width: 100%; height: 600px;"
-  data-controller="map"
-  data-map-markers-value="<%= @markers.to_json %>"
-  data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
-</div>
-    </div>
-  </div>
-</div>
 </div>
