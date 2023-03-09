@@ -10,7 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_08_103700) do
+
+ActiveRecord::Schema[7.0].define(version: 2023_03_09_105201) do
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -51,6 +53,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_08_103700) do
     t.boolean "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "doctor_note"
+    t.text "note"
     t.index ["doctor_profile_id"], name: "index_appointments_on_doctor_profile_id"
     t.index ["user_id"], name: "index_appointments_on_user_id"
   end
@@ -67,6 +71,29 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_08_103700) do
     t.index ["user_id"], name: "index_doctor_profiles_on_user_id"
   end
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+  create_table "meetings", force: :cascade do |t|
+    t.string "name"
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_meetings_on_user_id"
+=======
+  create_table "pg_search_documents", force: :cascade do |t|
+    t.text "content"
+    t.string "searchable_type"
+    t.bigint "searchable_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["searchable_type", "searchable_id"], name: "index_pg_search_documents_on_searchable"
+>>>>>>> 31a42e0c5242877eab2ff0f13b797718f407f732
+  end
+
+>>>>>>> master
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false

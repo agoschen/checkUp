@@ -2,7 +2,11 @@ class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: :home
 
   def home
-    @doctor_profiles = DoctorProfile.all
+    if params[:query].present?
+      @doctor_profiles = DoctorProfile.search_by_specialty(params[:query])
+    else
+      @doctor_profiles = DoctorProfile.all
+    end
     @markers = @doctor_profiles.geocoded.map do |doctor_profile|
       {
         lat: doctor_profile.latitude,

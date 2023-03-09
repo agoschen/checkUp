@@ -1,33 +1,30 @@
 class AppointmentsController < ApplicationController
-  def new
-    @appointment = Appointment.new
-    @doctor_profile = DoctorProfile.find(params[:doctor_profile_id])
-    @doctor_profile_user = User.find(@doctor_profile.user_id)
-  end
-
-  def create
-    @appointment = Appointment.new(appointment_params)
-    @doctor_profile = DoctorProfile.find(params[:doctor_profile_id])
-    @appointment.doctor_profile_id = @doctor_profile.id
-    @appointment.user_id = current_user.id
-    if @appointment.save
-      redirect_to root_path, notice: "Appointment was successfully created."
-    else
-      render :new, status: :unprocessable_entity, notice: "Appointment was not successfully created."
-    end
-  end
+  before_action :set_params, only: %i[ show ]
 
   def index
     @appointments = Appointment.where(user_id: current_user)
   end
 
+  def create
+    appointment = Appointment.new(appointment_params)
+    appointment.user = current_user
+    appointment.doctor_profile = DoctorProfile.find(params[:doctor_profile_id])
+    if appointment.save
+      redirect_to root_path
+    end
+  end
+
   def show
-    @appointment = Appointment.find(params[:id])
+    @current_user = current_user
   end
 
   private
 
+  def set_params
+    @appointment = Appointment.find(params[:id])
+  end
+
   def appointment_params
-    params.require(:appointment).permit(:date, :start_time, :end_time, :user_id, :doctor_profile_id)
+    params.require(:appointment).permit(:date, :start_time, :end_time, :note, :doctor_profile_id)
   end
 end
