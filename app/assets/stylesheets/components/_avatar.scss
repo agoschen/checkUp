@@ -1,10 +1,19 @@
 .avatar {
   width: 40px;
+  height: 40px;
   border-radius: 50%;
 }
+img.avatar-medium {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+}
+
 .avatar-large {
   width: 200px;
+  height: 200px;
   border-radius: 50%;
+  margin: 15px 0;
 }
 .avatar-bordered {
   width: 40px;
@@ -17,4 +26,8 @@
   border-radius: 0px;
   box-shadow: 0 1px 2px rgba(0,0,0,0.2);
   border: white 1px solid;
+}
+
+.avatar, .avatar-medium, .avatar-large {
+  object-fit: cover;
 }
