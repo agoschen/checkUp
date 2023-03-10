@@ -3,55 +3,29 @@
     <h2 class="header">My Appointments</h2>
       <h4 class="header">Upcoming Appointments</h4>
       <%# upcoming appts %>
-        <div class="w">
+      <div class="wrapper">
+      </div>
+        <div class="card-product">
+        <div class="home">
             <% if @appointments.empty? %>
             <h2>Upcoming appointments with Doctors: </h2>
             <% else  %>
-              <h2>Upcoming appointments with Doctors: </h2>
                 <% @appointments.each do |appointment|%>
                   <%= link_to appointment_path(appointment) do %>
-                    <div class="card-appointment">
+                    <div class="home">
                       <img src="https://xsgames.co/randomusers/avatar.php?g=male" />
-                        <div class="card-appointment-infos">
-                          <h2>With Dr <%= appointment.doctor_profile.user.last_name%>, for <%= appointment.doctor_profile.specialty  %></h2>
-                            <p>Appointment date: <%= appointment.date %></p>
-                            <p>Appointment time: <%= appointment.start_time %></p>
-                            <h6>Appointment address: <%= appointment.doctor_profile.practice_address %></h6>
-                        </div>
-                        <div class="card-appointment-contact">
-                          <h6>email: <%= appointment.doctor_profile.user.email%></h6>
-                          <h6>Phone no : <%= appointment.doctor_profile.user.phone_number%></h6>
+                        <div class="avatar">
+                          <p class="name"><%= appointment.doctor_profile.user.last_name%>, for <%= appointment.doctor_profile.specialty  %></p>
+                            <p class="name">Appointment date: <%= appointment.date %></p>
+                            <p class="specialty">Appointment time: <%= appointment.start_time %></p>
+                            <p class="specialty">Appointment address: <%= appointment.doctor_profile.practice_address %></p>
                         </div>
                     </div>
                     <% end %>
                   <% end %>
             <% end %>
-            <% if @doctor_appointments.empty? %>
-              <h2>Upcoming appointments with Patients: </h2>
-
-            <% else  %>
-              <h2>Upcoming appointments with Patients: </h2>
-                <% @doctor_appointments.each do |appointment|%>
-                  <%= link_to appointment_path(appointment) do %>
-                    <div class="card-appointment">
-                      <img src="https://xsgames.co/randomusers/avatar.php?g=male" />
-                      <div class="card-appointment-infos">
-                        <h2>With Patient <%= appointment.user.first_name%> <%= appointment.user.last_name%></h2>
-                          <p>Appointment date: <%= appointment.date %></p>
-                          <p>Appointment time: <%= appointment.start_time %></p>
-                      </div>
-                      <div class="card-appointment-contact">
-                          <h6>email: <%= appointment.user.email%></h6>
-                          <h6>Phone no : <%= appointment.user.phone_number%></h6>
-                      </div>
-                    </div>
-                    <% end %>
-                  <% end %>
-                </div>
-              <% end %>
         </div>
-        <%# calendar %>
-         <h4 class="header">Calendar</h4>
+        </div>
         <div>
       </div>
   </div>
