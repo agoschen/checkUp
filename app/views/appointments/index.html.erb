@@ -1,11 +1,34 @@
 
-<div class="container">
+<div class="wrapper">
+  <div class="container">
+    <h2 class="header">My Appointments</h2>
 
-  <h1> My Appointments </h1>
+      <h4 class="header">Upcoming Appointments</h4>
+      <%# upcoming appts %>
+        <div class="home">
+
+        </div>
+
+        <%# passed appsts appts %>
+      <h4 class="header">Passed Appointments</h4>
+        <div>
+
+        </div>
+
+        <%# calendar %>
+         <h4 class="header">Calendar</h4>
+        <div>
+
+      </div>
+  </div>
+
+
+
+</div>
 
   <% if @appointments.empty? %>
   <h2>Upcoming appointments with Doctors: </h2>
-    <h3>You have no upcoming appoinments</h3>
+
     <p>****************************************************************************</p>
  <% else  %>
   <h2>Upcoming appointments with Doctors: </h2>
@@ -13,7 +36,6 @@
       <%= link_to appointment_path(appointment) do %>
         <div class="card-appointment">
           <img src="https://xsgames.co/randomusers/avatar.php?g=male" />
-          <%# this image source should totally be from the dr_users_profile pic - linked - not static to this card %>
             <div class="card-appointment-infos">
               <h2>With Dr <%= appointment.doctor_profile.user.last_name%>, for <%= appointment.doctor_profile.specialty  %></h2>
                 <p>Appointment date: <%= appointment.date %></p>
@@ -31,17 +53,15 @@
 
  <% if @doctor_appointments.empty? %>
   <h2>Upcoming appointments with Patients: </h2>
-    <h3>You have no upcoming appoinments</h3>
+
  <% else  %>
   <h2>Upcoming appointments with Patients: </h2>
     <% @doctor_appointments.each do |appointment|%>
       <%= link_to appointment_path(appointment) do %>
         <div class="card-appointment">
           <img src="https://xsgames.co/randomusers/avatar.php?g=male" />
-          <%# this image source should totally be from the dr_users_profile pic - linked - not static to this card %>
           <div class="card-appointment-infos">
             <h2>With Patient <%= appointment.user.first_name%> <%= appointment.user.last_name%></h2>
-            <%# " With Patient appointment.user.first_name and appointment.user.last_name, for appointment.special_notes "" %>
               <p>Appointment date: <%= appointment.date %></p>
               <p>Appointment time: <%= appointment.start_time %></p>
           </div>
