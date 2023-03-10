@@ -22,6 +22,7 @@ DoctorProfile.destroy_all
 User.destroy_all
 specialty_array = ["Dentist", "Psychologist", "Psychiatrist", "GP", "Dermatologist", "OB/GYN", "Cardiologist", "Opthamologist", "Paediatrician", "Ear, Nose & Throat Specialist"]
 address_array = ["Gardens, Cape Town", "Rondebosch, Cape Town", "Bergvliet, Cape Town", "Greenpoint, Cape Town", "Salt River, Cape Town", "Vredehoek, Cape Town", "Edgemead, Cape Town"]
+illness_array = ["Persistent runny nose and dry cough", "Achey Breaky Heart - please help", "I've been to many drs thing ma bob"]
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 puts "*" * 20
 puts "CREATING DOCTORS, USERS, APPOINTMENTS"
@@ -36,8 +37,8 @@ user1 = User.create!(
   address: "Vredehoek, Cape Town",
   phone_number: 1234,
   email: "mike@test.com",
-  password: '123456'
-  )
+  password: '123456',
+)
 puts "User1 = #{user1.first_name}, user id: #{user1.id}, user email: #{user1.email}"
 
 doc_user2 = User.create!(
@@ -53,8 +54,11 @@ doc_user_profile2 = DoctorProfile.create(
   specialty: specialty_array.sample,
   practice_address: "Claremont, Cape Town",
   # availability: ["Mon 08-09", "Mon 09-10", "Mon 10-11", "Mon 12-13", "Mon 13-14", "Mon 14-15", "Tues 08-09", "Tues 09-10", "Tues 10-11"],
-  user_id: doc_user2.id
-  practice_hours: 
+  user_id: doc_user2.id,
+  practise_hours: "Monday - Friday: 08:00 - 17:00",
+  qualifications: "MMbcH, Dip Psy.Ar",
+  reviews: "Dr James is such a kind and gentle Dr, he really helped me get my son well",
+  bio: "Ordan Reich is a dentist serving the community of New York, NY. Dr. Reich attended University of Missouri, Kansas City, where he received his dental degree, and completed his residency in general practice at Mercy Hospital, St. Louis"
 )
 file = File.open(File.join(__dir__, 'seed_images/doc1.png'))
 doc_user_profile2.photo.attach(io: file, filename: 'dr pp.png', content_type: 'image/png')
@@ -66,7 +70,8 @@ appointment3 = Appointment.create!(
   end_time: "09:00:00",
   status: true,
   user_id: user1.id,
-  doctor_profile_id: doc_user_profile2.id
+  doctor_profile_id: doc_user_profile2.id,
+  notes: illness_array.sample
 )
 puts "Appt3: Date #{appointment3.date}, Appointment id: #{appointment3.id}, Time: #{appointment3.start_time} #{appointment3.end_time}, Adress: #{doc_user_profile2.practice_address}"
 
@@ -81,8 +86,8 @@ user4 = User.create!(
   address: "Gardens, Cape Town",
   phone_number: 1234,
   email: "sarah@test.com",
-  password: '123456'
-  )
+  password: '123456',
+)
 puts "User4 = #{user4.first_name}, user id: #{user4.id}, user email: #{user4.email}"
 
 doc_user5 = User.create!(
@@ -98,7 +103,11 @@ doc_user_profile5 = DoctorProfile.create(
   specialty: specialty_array.sample,
   practice_address: "Constantia, Cape Town",
   # availability: ["Mon 08-09", "Mon 09-10", "Mon 10-11", "Mon 12-13", "Mon 13-14", "Mon 14-15", "Tues 08-09", "Tues 09-10", "Tues 10-11"],
-  user_id: doc_user5.id
+  user_id: doc_user5.id,
+  practise_hours: "Monday - Thurs: 08:00 - 17:00, Sat 08:00-13:00",
+  qualifications: "MD_ZaFR, Dtn",
+  reviews: "Practice is professional, organised and highly clean",
+  bio: "Dr. Fariya Isla is a New York native, having grown up in Queens and attended New York University for her bachelor's degree. Dr. Isla obtained her Doctor of Dental Surgery degree from the State University of New York at Stony"
 )
 file = File.open(File.join(__dir__, 'seed_images/doc2.png'))
 doc_user_profile5.photo.attach(io: file, filename: 'dr pp.png', content_type: 'image/png')
@@ -110,7 +119,8 @@ appointment6 = Appointment.create!(
   end_time: "11:00:00",
   status: true,
   user_id: user1.id,
-  doctor_profile_id: doc_user_profile5.id
+  doctor_profile_id: doc_user_profile5.id,
+  notes: illness_array.sample
 )
 puts "Appt6: Date #{appointment6.date}, Appointment id: #{appointment6.id}, Time: #{appointment6.start_time} #{appointment6.end_time}, Adress: #{doc_user_profile5.practice_address}"
 
@@ -126,8 +136,8 @@ user7 = User.create!(
   address: "Vredehoek, Cape Town",
   phone_number: 1234,
   email: "greg@test.com",
-  password: '123456'
-  )
+  password: '123456',
+)
 puts "User7 = #{user7.first_name}, user id: #{user7.id}, user email: #{user7.email}"
 
 doc_user8 = User.create!(
@@ -143,7 +153,11 @@ doc_user_profile8 = DoctorProfile.create(
   specialty: specialty_array.sample,
   practice_address: "Edgemead, Cape Town",
   # availability: ["Mon 08-09", "Mon 09-10", "Mon 10-11", "Mon 12-13", "Mon 13-14", "Mon 14-15", "Tues 08-09", "Tues 09-10", "Tues 10-11"],
-  user_id: doc_user8.id
+  user_id: doc_user8.id,
+  practise_hours: "Monday - Thurs: 08:00 - 17:00, Sat 08:00-13:00",
+  qualifications: "MD_ZaFR, Dtn",
+  reviews: "Practice is professional, organised and highly clean",
+  bio: "Dr hdsfjkhsdjkfwerjhjksdbfjksdbfjse"
 )
 file = File.open(File.join(__dir__, 'seed_images/doc3.png'))
 doc_user_profile8.photo.attach(io: file, filename: 'dr pp.png', content_type: 'image/png')
@@ -155,7 +169,8 @@ appointment9 = Appointment.create!(
   end_time: "09:00:00",
   status: true,
   user_id: user7.id,
-  doctor_profile_id: doc_user_profile8.id
+  doctor_profile_id: doc_user_profile8.id,
+  notes: illness_array.sample
 )
 puts "Appt9: Date #{appointment9.date}, Appointment id: #{appointment9.id}, Time: #{appointment9.start_time} #{appointment9.end_time}, Adress: #{doc_user_profile8.practice_address}"
 
@@ -189,7 +204,11 @@ doc_user_profile11 = DoctorProfile.create(
   specialty: specialty_array.sample,
   practice_address: "Hout Bay, Cape Town",
   # availability: ["Mon 08-09", "Mon 09-10", "Mon 10-11", "Mon 12-13", "Mon 13-14", "Mon 14-15", "Tues 08-09", "Tues 09-10", "Tues 10-11"],
-  user_id: doc_user11.id
+  user_id: doc_user11.id,
+  practise_hours: "Monday - Thurs: 08:00 - 17:00, Sat 08:00-13:00",
+  qualifications: "MD_ZaFR, Dtn",
+  reviews: "Practice is professional, organised and highly clean",
+  bio: "Drskjdfghsdgfsdfugh"
 )
 file = File.open(File.join(__dir__, 'seed_images/doc4.png'))
 doc_user_profile11.photo.attach(io: file, filename: 'dr pp.png', content_type: 'image/png')
@@ -201,7 +220,8 @@ appointment12 = Appointment.create!(
   end_time: "12:00:00",
   status: true,
   user_id: user10.id,
-  doctor_profile_id: doc_user_profile11.id
+  doctor_profile_id: doc_user_profile11.id,
+  notes: illness_array.sample
 )
 puts "Appt12: Date #{appointment12.date}, Appointment id: #{appointment12.id}, Time: #{appointment12.start_time} #{appointment12.end_time}, Adress: #{doc_user_profile11.practice_address}"
 
@@ -233,7 +253,11 @@ doc_user_profile14 = DoctorProfile.create(
   specialty: "Sillynessology",
   practice_address: "Camps Bay, Cape Town",
   # availability: "#{appointment15..date.start_time}, appt, date, start time, i think this has to be a seperate table - since then you can access
-  user_id: doc_user14.id
+  user_id: doc_user14.id,
+  practise_hours: "Monday - Thurs: 08:00 - 17:00, Fri 08:00-13:00",
+  qualifications: "Md_MbbCH, SocSci, Rd",
+  reviews: "An Apple a Day keeps the Doctor Away!!!!",
+  bio: "Dr Ricky is the bombD at chess and Loooves a fat gab about Catz"
 )
 file = File.open(File.join(__dir__, 'seed_images/doc5.png'))
 doc_user_profile14.photo.attach(io: file, filename: 'dr pp.png', content_type: 'image/png')
@@ -245,7 +269,8 @@ appointment15 = Appointment.create!(
   end_time: "15:00:00",
   status: true,
   user_id: user13.id,
-  doctor_profile_id: doc_user_profile14.id
+  doctor_profile_id: doc_user_profile14.id,
+  notes: "I've got an Achey breakey heart",
 )
 puts "Appt15: Date #{appointment15.date}, Appointment id: #{appointment15.id}, Time: #{appointment15.start_time} #{appointment15.end_time}, Adress: #{doc_user_profile14.practice_address}"
 
@@ -277,7 +302,11 @@ doc_user_profile17 = DoctorProfile.create(
   specialty: specialty_array.sample,
   practice_address: "Milnerton, Cape Town",
   # availability: "#{appointment15..date.start_time}, appt, date, start time, i think this has to be a seperate table - since then you can access
-  user_id: doc_user17.id
+  user_id: doc_user17.id,
+  practise_hours: "Monday - Thurs: 08:00 - 17:00, Sat 08:00-13:00",
+  qualifications: "MD_ZaFR, Dtn",
+  reviews: "Practice is professional, organised and highly clean",
+  bio: "Drskjdfghsdgfsdfugh"
 )
 file = File.open(File.join(__dir__, 'seed_images/doc6.png'))
 doc_user_profile17.photo.attach(io: file, filename: 'dr pp.png', content_type: 'image/png')
@@ -289,7 +318,8 @@ appointment18 = Appointment.create!(
   end_time: "15:00:00",
   status: true,
   user_id: user16.id,
-  doctor_profile_id: doc_user_profile17.id
+  doctor_profile_id: doc_user_profile17.id,
+  notes: illness_array.sample
 )
 puts "Appt18: Date #{appointment18.date}, Appointment id: #{appointment18.id}, Time: #{appointment18.start_time} #{appointment18.end_time}, Adress: #{doc_user_profile17.practice_address}"
 
@@ -304,7 +334,8 @@ appointment19 = Appointment.create!(
   end_time: "09:00:00",
   status: true,
   user_id: user4.id,
-  doctor_profile_id: doc_user_profile17.id
+  doctor_profile_id: doc_user_profile17.id,
+  notes: illness_array.sample
 )
 
 puts "User4 = #{user4.first_name}, user id: #{user4.id}, user email: #{user4.email}"
@@ -323,7 +354,8 @@ appointment20 = Appointment.create!(
   end_time: "12:00:00",
   status: true,
   user_id: user7.id,
-  doctor_profile_id: doc_user_profile17.id
+  doctor_profile_id: doc_user_profile17.id,
+  notes: illness_array.sample
 )
 
 puts "User7 = #{user7.first_name}, user id: #{user7.id}, user email: #{user7.email}"
@@ -342,7 +374,8 @@ appointment21 = Appointment.create!(
   end_time: "14:00:00",
   status: true,
   user_id: user10.id,
-  doctor_profile_id: doc_user_profile17.id
+  doctor_profile_id: doc_user_profile17.id,
+  notes: illness_array.sample
 )
 
 puts "User10 = #{user10.first_name}, user id: #{user10.id}, user email: #{user10.email}"
@@ -362,7 +395,8 @@ appointment22 = Appointment.create!(
   end_time: "11:00:00",
   status: true,
   user_id: user1.id,
-  doctor_profile_id: doc_user_profile14.id
+  doctor_profile_id: doc_user_profile14.id,
+  notes: illness_array.sample
 )
 
 puts "User1 = #{user1.first_name}, user id: #{user1.id}, user email: #{user1.email}"
@@ -381,7 +415,8 @@ appointment23 = Appointment.create!(
   end_time: "14:00:00",
   status: true,
   user_id: user4.id,
-  doctor_profile_id: doc_user_profile14.id
+  doctor_profile_id: doc_user_profile14.id,
+  notes: illness_array.sample
 )
 
 puts "User4 = #{user4.first_name}, user id: #{user4.id}, user email: #{user4.email}"
@@ -400,7 +435,8 @@ appointment24 = Appointment.create!(
   end_time: "12:00:00",
   status: true,
   user_id: user7.id,
-  doctor_profile_id: doc_user_profile14.id
+  doctor_profile_id: doc_user_profile14.id,
+  notes: illness_array.sample
 )
 
 puts "User7 = #{user7.first_name}, user id: #{user7.id}, user email: #{user7.email}"
@@ -419,7 +455,8 @@ appointment25 = Appointment.create!(
   end_time: "12:00:00",
   status: true,
   user_id: doc_user14.id,
-  doctor_profile_id: doc_user_profile17.id
+  doctor_profile_id: doc_user_profile17.id,
+  notes: illness_array.sample
 )
 
 puts "UserDoc14 = #{doc_user14.first_name}, user id: #{doc_user14.id}, user email: #{doc_user14.email}"
