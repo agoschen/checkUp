@@ -20,7 +20,7 @@ puts "-" * 20
 Appointment.destroy_all
 DoctorProfile.destroy_all
 User.destroy_all
-specialty_array = ["Dentist", "Psychologist", "Psychiatrist", "GP", "Dermatologist", "OB/GYN", "Cardiologist", "Opthamologist", "Paediatrician", "Ear, Nose & Throat Specialist"]
+specialty_array = ["Dentist", "Psychologist", "GP", "Cardiologist", "Ear, Nose & Throat Specialist"]
 address_array = ["Gardens, Cape Town", "Rondebosch, Cape Town", "Bergvliet, Cape Town", "Greenpoint, Cape Town", "Salt River, Cape Town", "Vredehoek, Cape Town", "Edgemead, Cape Town"]
 illness_array = ["Persistent runny nose and dry cough", "Achey Breaky Heart - please help", "I've been to many drs thing ma bob"]
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -51,7 +51,7 @@ doc_user2 = User.create!(
 )
 
 doc_user_profile2 = DoctorProfile.create(
-  specialty: specialty_array.sample,
+  specialty: "GP",
   practice_address: "Claremont, Cape Town",
   # availability: ["Mon 08-09", "Mon 09-10", "Mon 10-11", "Mon 12-13", "Mon 13-14", "Mon 14-15", "Tues 08-09", "Tues 09-10", "Tues 10-11"],
   user_id: doc_user2.id,
@@ -201,7 +201,7 @@ doc_user11 = User.create!(
 )
 
 doc_user_profile11 = DoctorProfile.create(
-  specialty: specialty_array.sample,
+  specialty: "Cardiologist",
   practice_address: "Hout Bay, Cape Town",
   # availability: ["Mon 08-09", "Mon 09-10", "Mon 10-11", "Mon 12-13", "Mon 13-14", "Mon 14-15", "Tues 08-09", "Tues 09-10", "Tues 10-11"],
   user_id: doc_user11.id,
