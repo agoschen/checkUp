@@ -20,14 +20,11 @@
         </div>
       </div>
       <div class="second-wrap">
-          <h3 class="title">Appointments</h3>
-          <div class="">
-            <p><%= @appointments.date %></p>
-            <p><span>From: </span>
-            <%= @appointments.start_time %>
-            <span>to: </span>
-            <%= @appointments.end_time %>
-            </p>
+          <h3 class="title">Calender</h3>
+         <div class="">
+          <%= month_calendar do |date| %>
+            <%= date %>
+          <% end %>
           </div>
       </div>
       <div class="second-wrap">
