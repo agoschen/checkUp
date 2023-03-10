@@ -5,7 +5,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :appointments
   has_one :doctor_profile
-  has_many :doctor_profiles, through: :appointments
   has_many :favourites
   has_many :doctor_profiles, through: :favourites
 end

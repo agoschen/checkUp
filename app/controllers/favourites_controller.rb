@@ -1,8 +1,7 @@
 class FavouritesController < ApplicationController
 
   def index
-    @favourites = Favourite.where(user_id: current_user)
-    @doctor_profiles = DoctorProfile.all
+    @favourite_doctors = current_user.doctor_profiles
   end
 
   def create
