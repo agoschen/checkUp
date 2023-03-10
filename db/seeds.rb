@@ -21,6 +21,7 @@ Appointment.destroy_all
 DoctorProfile.destroy_all
 User.destroy_all
 specialty_array = ["Dentist", "Psychologist", "Psychiatrist", "GP", "Dermatologist", "OB/GYN", "Cardiologist", "Opthamologist", "Paediatrician", "Ear, Nose & Throat Specialist"]
+address_array = ["Gardens, Cape Town", "Rondebosch, Cape Town", "Bergvliet, Cape Town", "Greenpoint, Cape Town", "Salt River, Cape Town", "Vredehoek, Cape Town", "Edgemead, Cape Town"]
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 puts "*" * 20
 puts "CREATING DOCTORS, USERS, APPOINTMENTS"
@@ -53,6 +54,7 @@ doc_user_profile2 = DoctorProfile.create(
   practice_address: "Claremont, Cape Town",
   # availability: ["Mon 08-09", "Mon 09-10", "Mon 10-11", "Mon 12-13", "Mon 13-14", "Mon 14-15", "Tues 08-09", "Tues 09-10", "Tues 10-11"],
   user_id: doc_user2.id
+  practice_hours: 
 )
 file = File.open(File.join(__dir__, 'seed_images/doc1.png'))
 doc_user_profile2.photo.attach(io: file, filename: 'dr pp.png', content_type: 'image/png')
@@ -439,7 +441,7 @@ puts "-" * 20
 #   user = User.create!(
 #     first_name: Faker::Name.first_name,
 #     last_name: Faker::Name.last_name,
-#     address: Faker::Address.full_address,
+#     address: address_array.sample,
 #     phone_number: Faker::PhoneNumber.phone_number,
 #     email: Faker::Internet.email,
 #     password: '123456'
@@ -452,15 +454,14 @@ puts "-" * 20
 #   user = User.create!(
 #     first_name: Faker::Name.first_name,
 #     last_name: Faker::Name.last_name,
-#     address: Faker::Address.full_address,
+#     address: address_array.sample,
 #     phone_number: Faker::PhoneNumber.phone_number,
 #     email: Faker::Internet.email,
 #     password: '123456'
 #     )
 #   doctor_profile = DoctorProfile.create!(
-#     # we can maybe add a link to their profile pics in here ?
-#     specialty: Faker::Emotion.noun,
-#     practice_address: Faker::Address.full_address,
+#     specialty: specialty_array.sample,
+#     practice_address: address_array.sample,
 #     availability: Faker::Date.between(from: 1.year.ago, to: 1.year.from_now),
 #     user_id: user.id
 #   )
