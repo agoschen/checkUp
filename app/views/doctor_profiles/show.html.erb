@@ -17,6 +17,10 @@
             </h5>
             <p class="specialty"><i class="fa-solid fa-briefcase"></i> <%=@doctor_profile.specialty %></p>
             <p class="address"><i class="fa-solid fa-location-dot"></i> <%=@doctor_profile.practice_address %></p>
+            <p class="bio"><i class="fa-solid fa-location-dot"></i> <%=@doctor_profile.bio %></p>
+            <p class="practise_hours"><i class="fa-solid fa-location-dot"></i> <%=@doctor_profile.practise_hours %></p>
+            <p class="qualifications"><i class="fa-solid fa-location-dot"></i> <%=@doctor_profile.qualifications %></p>
+            <p class="reviews"><i class="fa-solid fa-location-dot"></i> <%=@doctor_profile.reviews %></p>
             <% if current_user.favourites.exists?(doctor_profile_id: @doctor_profile.id) %>
               <%= button_to "Remove from favourites", doctor_profile_favourite_path(current_user.favourites.find_by(doctor_profile_id: @doctor_profile.id)), method: :delete %>
             <% else %>
@@ -25,6 +29,14 @@
           </div>
         </div>
 
+      </div>
+      <div class="second-wrap">
+          <h3 class="title">Calender</h3>
+         <div class="">
+          <%= month_calendar do |date| %>
+            <%= date %>
+          <% end %>
+          </div>
       </div>
       <div class="second-wrap">
       <h3 class="title">Book Appointment</h3>

@@ -1,12 +1,3 @@
-<h1> This Appointment: </h1>
-
-<h3> Logged in as <%= current_user.first_name %> </h3>
-<p> <%= current_user.first_name %>'s user id is <%= current_user.id  %> </p>
-
-<br>
-
-<%# <%= @appointment.doctor_profile.img %>
-<%# dr profile show page : line 6: <img src="https:// ie the link to the DRS PROFILE PIC THEY UPLOADED %>
 
 <br>
 <div class="container">
@@ -19,10 +10,16 @@
   <img src="https://xsgames.co/randomusers/avatar.php?g=male" />
   </div>
   <div class="card-appointment-contact">
-    <h6> Date: <%= @appointment.date %> </h6>
-      <p> Start Time: <%= @appointment.start_time %> </p>
-      <p> Duration: <%= @appointment.end_time.to_i - @appointment.start_time.to_i %> hours </p>
-      <p> with patient: <%= @appointment.user.first_name %> <%= @appointment.user.last_name %></p>
+    <div>
+      <h6> Date: <%= @appointment.date %> </h6>
+        <p> Start Time: <%= @appointment.start_time %> </p>
+        <p> Duration: <%= @appointment.end_time.to_i - @appointment.start_time.to_i %> hours </p>
+        <p> with patient: <%= @appointment.user.first_name %> <%= @appointment.user.last_name %></p>
+    </div>
+    <div>
+      <h6> Notes: </h6>
+        <p><%= @appointment.note %></p></p>
+    </div>
   </div>
 </div>
 <% else %>
@@ -32,13 +29,17 @@
   <img src="https://xsgames.co/randomusers/avatar.php?g=male" />
   </div>
   <div class="card-appointment-contact">
-    <h6> Date: <%= @appointment.date %> </h6>
-      <p> Start Time: <%= @appointment.start_time %> </p>
-      <p> Duration: <%= @appointment.end_time.to_i - @appointment.start_time.to_i %> hours </p>
-      <p> with: Dr <%= @appointment.doctor_profile.user.last_name %>,  <%= @appointment.doctor_profile.specialty %> </p>
-      <p> Address:  <%= @appointment.doctor_profile.practice_address %> </p>
-      <%# and notes: @appointment.special_notes  %>
-<%# special notes being an input when the user books.  we dont have a form input for patients booking an appt-  %>
+    <div>
+      <h6> Date: <%= @appointment.date %> </h6>
+        <p> Start Time: <%= @appointment.start_time %> </p>
+        <p> Duration: <%= @appointment.end_time.to_i - @appointment.start_time.to_i %> hours </p>
+        <p> with: Dr <%= @appointment.doctor_profile.user.last_name %>,  <%= @appointment.doctor_profile.specialty %> </p>
+        <p> Address:  <%= @appointment.doctor_profile.practice_address %> </p>
+    </div>
+    <div>
+      <h6> Notes: </h6>
+        <p><%= @appointment.note %></p></p>
+    </div>
   </div>
 </div>
 <% end %>

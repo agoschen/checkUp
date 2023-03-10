@@ -9,13 +9,15 @@ nav{
   background: white;
   position: fixed;
   height: 100px;
-  p.logo{
+  a.logo{
     font-size: 25px;
     letter-spacing: 2px;
     font-weight: 600;
     color: #1A4741;
     padding: 0;
-    margin: 0;  }
+    margin: 0;
+    text-decoration: none;
+  }
 }
 
 .navbar-lewagon .navbar-collapse {
