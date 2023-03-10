@@ -1,5 +1,6 @@
 <div class="main-wrapper">
   <div class="container">
+  <h2 class="header">Book An Appointment</h2>
     <div class="search-bar">
       <%= form_with method: :get, class: "search" do %>
         <%= text_field_tag :query,
@@ -12,7 +13,7 @@
     </div>
   </div>
   <div class="container">
-    <div class="" >
+    <div class="wrapper" >
       <div class="card-grid">
       <% @doctor_profiles.each do |doctor|%>
         <%= link_to doctor_profile_path(doctor) do %>

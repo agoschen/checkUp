@@ -27,7 +27,8 @@
 </div>
 
 <div class="container">
-  <div class="" >
+  <h2 class="header">Featured Doctors</h2>
+  <div class="wrapper" >
     <div class="card-grid">
     <% @doctor_profiles.each do |doctor|%>
       <%= link_to doctor_profile_path(doctor) do%>
@@ -36,7 +37,7 @@
         <% if doctor.photo.attached? %>
             <%= cl_image_tag doctor.photo.key, class: "avatar-medium", alt: "doctor" %>
             <% else %>
-              <%= image_tag "blank-profile-circle.png", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+              <%= image_tag "blank-profile-circle.png", class: "avatar-medium", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
             <% end %>
             <div class="card-body">
               <h5 class="name"><i class="fa-solid fa-user-doctor"></i> Dr. <%= doctor.user.first_name %> <%= doctor.user.last_name %></h5>

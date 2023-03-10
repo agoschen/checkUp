@@ -34,6 +34,7 @@ class DoctorProfilesController < ApplicationController
     @doctor_profile = DoctorProfile.find(params[:id])
     @doctor_profile_user = User.find(@doctor_profile.user_id)
     @appointment = Appointment.new
+    @appointments = Appointment.find(@doctor_profile.id)
   end
 
   private
