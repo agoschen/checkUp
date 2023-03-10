@@ -71,7 +71,7 @@ appointment3 = Appointment.create!(
   status: true,
   user_id: user1.id,
   doctor_profile_id: doc_user_profile2.id,
-  notes: illness_array.sample
+  note: illness_array.sample
 )
 puts "Appt3: Date #{appointment3.date}, Appointment id: #{appointment3.id}, Time: #{appointment3.start_time} #{appointment3.end_time}, Adress: #{doc_user_profile2.practice_address}"
 
@@ -120,7 +120,7 @@ appointment6 = Appointment.create!(
   status: true,
   user_id: user1.id,
   doctor_profile_id: doc_user_profile5.id,
-  notes: illness_array.sample
+  note: illness_array.sample
 )
 puts "Appt6: Date #{appointment6.date}, Appointment id: #{appointment6.id}, Time: #{appointment6.start_time} #{appointment6.end_time}, Adress: #{doc_user_profile5.practice_address}"
 
@@ -170,7 +170,7 @@ appointment9 = Appointment.create!(
   status: true,
   user_id: user7.id,
   doctor_profile_id: doc_user_profile8.id,
-  notes: illness_array.sample
+  note: illness_array.sample
 )
 puts "Appt9: Date #{appointment9.date}, Appointment id: #{appointment9.id}, Time: #{appointment9.start_time} #{appointment9.end_time}, Adress: #{doc_user_profile8.practice_address}"
 
@@ -221,7 +221,7 @@ appointment12 = Appointment.create!(
   status: true,
   user_id: user10.id,
   doctor_profile_id: doc_user_profile11.id,
-  notes: illness_array.sample
+  note: illness_array.sample
 )
 puts "Appt12: Date #{appointment12.date}, Appointment id: #{appointment12.id}, Time: #{appointment12.start_time} #{appointment12.end_time}, Adress: #{doc_user_profile11.practice_address}"
 
@@ -270,7 +270,7 @@ appointment15 = Appointment.create!(
   status: true,
   user_id: user13.id,
   doctor_profile_id: doc_user_profile14.id,
-  notes: "I've got an Achey breakey heart",
+  note: "I've got an Achey breakey heart",
 )
 puts "Appt15: Date #{appointment15.date}, Appointment id: #{appointment15.id}, Time: #{appointment15.start_time} #{appointment15.end_time}, Adress: #{doc_user_profile14.practice_address}"
 
@@ -319,7 +319,7 @@ appointment18 = Appointment.create!(
   status: true,
   user_id: user16.id,
   doctor_profile_id: doc_user_profile17.id,
-  notes: illness_array.sample
+  note: illness_array.sample
 )
 puts "Appt18: Date #{appointment18.date}, Appointment id: #{appointment18.id}, Time: #{appointment18.start_time} #{appointment18.end_time}, Adress: #{doc_user_profile17.practice_address}"
 
@@ -335,7 +335,7 @@ appointment19 = Appointment.create!(
   status: true,
   user_id: user4.id,
   doctor_profile_id: doc_user_profile17.id,
-  notes: illness_array.sample
+  note: illness_array.sample
 )
 
 puts "User4 = #{user4.first_name}, user id: #{user4.id}, user email: #{user4.email}"
@@ -355,7 +355,7 @@ appointment20 = Appointment.create!(
   status: true,
   user_id: user7.id,
   doctor_profile_id: doc_user_profile17.id,
-  notes: illness_array.sample
+  note: illness_array.sample
 )
 
 puts "User7 = #{user7.first_name}, user id: #{user7.id}, user email: #{user7.email}"
@@ -375,7 +375,7 @@ appointment21 = Appointment.create!(
   status: true,
   user_id: user10.id,
   doctor_profile_id: doc_user_profile17.id,
-  notes: illness_array.sample
+  note: illness_array.sample
 )
 
 puts "User10 = #{user10.first_name}, user id: #{user10.id}, user email: #{user10.email}"
@@ -396,7 +396,7 @@ appointment22 = Appointment.create!(
   status: true,
   user_id: user1.id,
   doctor_profile_id: doc_user_profile14.id,
-  notes: illness_array.sample
+  note: illness_array.sample
 )
 
 puts "User1 = #{user1.first_name}, user id: #{user1.id}, user email: #{user1.email}"
@@ -416,7 +416,7 @@ appointment23 = Appointment.create!(
   status: true,
   user_id: user4.id,
   doctor_profile_id: doc_user_profile14.id,
-  notes: illness_array.sample
+  note: illness_array.sample
 )
 
 puts "User4 = #{user4.first_name}, user id: #{user4.id}, user email: #{user4.email}"
@@ -436,7 +436,7 @@ appointment24 = Appointment.create!(
   status: true,
   user_id: user7.id,
   doctor_profile_id: doc_user_profile14.id,
-  notes: illness_array.sample
+  note: illness_array.sample
 )
 
 puts "User7 = #{user7.first_name}, user id: #{user7.id}, user email: #{user7.email}"
@@ -456,7 +456,7 @@ appointment25 = Appointment.create!(
   status: true,
   user_id: doc_user14.id,
   doctor_profile_id: doc_user_profile17.id,
-  notes: illness_array.sample
+  note: illness_array.sample
 )
 
 puts "UserDoc14 = #{doc_user14.first_name}, user id: #{doc_user14.id}, user email: #{doc_user14.email}"
