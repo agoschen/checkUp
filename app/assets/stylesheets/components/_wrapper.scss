@@ -1,11 +1,44 @@
 .wrapper{
   display: flex;
-
+  padding-top: 70px;
+  background-color: transparent;
   .first-wrap{
     flex: 1;
+    // background-color: red;
+    align-self: flex-start;
+    place-items: start;
   }
 
   .second-wrap{
     margin: 0 20px;
   }
+
+  .first-wrap, .second-wrap {
+    padding: 20px;
+    border-radius: 15px;
+  }
+}
+
+.main-wrapper{
+  display: flex;
+  flex-direction: column;
+  padding-top: 100px;
+}
+
+.profile-wrapper{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px;
+}
+
+.header, .title{
+  color: #7DA39D;
+}
+
+.header{
+  font-weight: 600;
+}
+
+.title{
+
 }

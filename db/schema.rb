@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_09_105201) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_09_211014) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -69,6 +69,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_09_105201) do
     t.index ["user_id"], name: "index_doctor_profiles_on_user_id"
   end
 
+  create_table "favourites", force: :cascade do |t|
+    t.bigint "doctor_profile_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["doctor_profile_id"], name: "index_favourites_on_doctor_profile_id"
+    t.index ["user_id"], name: "index_favourites_on_user_id"
+  end
+
   create_table "pg_search_documents", force: :cascade do |t|
     t.text "content"
     t.string "searchable_type"
@@ -99,4 +108,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_09_105201) do
   add_foreign_key "appointments", "doctor_profiles"
   add_foreign_key "appointments", "users"
   add_foreign_key "doctor_profiles", "users"
+  add_foreign_key "favourites", "doctor_profiles"
+  add_foreign_key "favourites", "users"
 end
