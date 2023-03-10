@@ -13,13 +13,9 @@
           <%= text_field_tag :query,
             params[:query],
             class: "form-control",
-            placeholder: "Specialty"
+            placeholder: "Find doctors by specialty or location..."
           %>
-          <%= text_field_tag :query,
-            params[:query],
-            class: "form-control",
-            placeholder: "Location"
-          %>
+
           <%= submit_tag "Search", class: "button", type: 'submit' %>
         <% end %>
       </div>
