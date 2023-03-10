@@ -14,7 +14,7 @@ class AppointmentsController < ApplicationController
     appointment.user = current_user
     appointment.doctor_profile = DoctorProfile.find(params[:doctor_profile_id])
     if appointment.save
-      redirect_to root_path
+      redirect_to appointment_path(appointment)
     end
   end
 
