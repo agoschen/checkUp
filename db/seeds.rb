@@ -55,7 +55,7 @@ doc_user_profile2 = DoctorProfile.create(
   practice_address: "Claremont, Cape Town",
   # availability: ["Mon 08-09", "Mon 09-10", "Mon 10-11", "Mon 12-13", "Mon 13-14", "Mon 14-15", "Tues 08-09", "Tues 09-10", "Tues 10-11"],
   user_id: doc_user2.id,
-  practise_hours: "Monday - Friday: 08:00 - 17:00",
+  practice_hours: "Monday - Friday: 08:00 - 17:00",
   qualifications: "MMbcH, Dip Psy.Ar",
   reviews: "Dr James is such a kind and gentle Dr, he really helped me get my son well",
   bio: "Ordan Reich is a dentist serving the community of New York, NY. Dr. Reich attended University of Missouri, Kansas City, where he received his dental degree, and completed his residency in general practice at Mercy Hospital, St. Louis"
@@ -104,7 +104,7 @@ doc_user_profile5 = DoctorProfile.create(
   practice_address: "Constantia, Cape Town",
   # availability: ["Mon 08-09", "Mon 09-10", "Mon 10-11", "Mon 12-13", "Mon 13-14", "Mon 14-15", "Tues 08-09", "Tues 09-10", "Tues 10-11"],
   user_id: doc_user5.id,
-  practise_hours: "Monday - Thurs: 08:00 - 17:00, Sat 08:00-13:00",
+  practice_hours: "Monday - Thurs: 08:00 - 17:00, Sat 08:00-13:00",
   qualifications: "MD_ZaFR, Dtn",
   reviews: "Practice is professional, organised and highly clean",
   bio: "Dr. Fariya Isla is a New York native, having grown up in Queens and attended New York University for her bachelor's degree. Dr. Isla obtained her Doctor of Dental Surgery degree from the State University of New York at Stony"
@@ -154,7 +154,7 @@ doc_user_profile8 = DoctorProfile.create(
   practice_address: "Edgemead, Cape Town",
   # availability: ["Mon 08-09", "Mon 09-10", "Mon 10-11", "Mon 12-13", "Mon 13-14", "Mon 14-15", "Tues 08-09", "Tues 09-10", "Tues 10-11"],
   user_id: doc_user8.id,
-  practise_hours: "Monday - Thurs: 08:00 - 17:00, Sat 08:00-13:00",
+  practice_hours: "Monday - Thurs: 08:00 - 17:00, Sat 08:00-13:00",
   qualifications: "MD_ZaFR, Dtn",
   reviews: "Practice is professional, organised and highly clean",
   bio: "Dr hdsfjkhsdjkfwerjhjksdbfjksdbfjse"
@@ -205,7 +205,7 @@ doc_user_profile11 = DoctorProfile.create(
   practice_address: "Hout Bay, Cape Town",
   # availability: ["Mon 08-09", "Mon 09-10", "Mon 10-11", "Mon 12-13", "Mon 13-14", "Mon 14-15", "Tues 08-09", "Tues 09-10", "Tues 10-11"],
   user_id: doc_user11.id,
-  practise_hours: "Monday - Thurs: 08:00 - 17:00, Sat 08:00-13:00",
+  practice_hours: "Monday - Thurs: 08:00 - 17:00, Sat 08:00-13:00",
   qualifications: "MD_ZaFR, Dtn",
   reviews: "Practice is professional, organised and highly clean",
   bio: "Drskjdfghsdgfsdfugh"
@@ -254,7 +254,7 @@ doc_user_profile14 = DoctorProfile.create(
   practice_address: "Camps Bay, Cape Town",
   # availability: "#{appointment15..date.start_time}, appt, date, start time, i think this has to be a seperate table - since then you can access
   user_id: doc_user14.id,
-  practise_hours: "Monday - Thurs: 08:00 - 17:00, Fri 08:00-13:00",
+  practice_hours: "Monday - Thurs: 08:00 - 17:00, Fri 08:00-13:00",
   qualifications: "Md_MbbCH, SocSci, Rd",
   reviews: "An Apple a Day keeps the Doctor Away!!!!",
   bio: "Dr Ricky is the bombD at chess and Loooves a fat gab about Catz"
@@ -303,7 +303,7 @@ doc_user_profile17 = DoctorProfile.create(
   practice_address: "Milnerton, Cape Town",
   # availability: "#{appointment15..date.start_time}, appt, date, start time, i think this has to be a seperate table - since then you can access
   user_id: doc_user17.id,
-  practise_hours: "Monday - Thurs: 08:00 - 17:00, Sat 08:00-13:00",
+  practice_hours: "Monday - Thurs: 08:00 - 17:00, Sat 08:00-13:00",
   qualifications: "MD_ZaFR, Dtn",
   reviews: "Practice is professional, organised and highly clean",
   bio: "Drskjdfghsdgfsdfugh"
