@@ -18,7 +18,7 @@
             <p class="specialty"><i class="fa-solid fa-briefcase"></i> <%=@doctor_profile.specialty %></p>
             <p class="address"><i class="fa-solid fa-location-dot"></i> <%=@doctor_profile.practice_address %></p>
             <p class="bio"><i class="fa-solid fa-location-dot"></i> <%=@doctor_profile.bio %></p>
-            <p class="practise_hours"><i class="fa-solid fa-location-dot"></i> <%=@doctor_profile.practise_hours %></p>
+            <p class="practice_hours"><i class="fa-solid fa-location-dot"></i> <%=@doctor_profile.practice_hours %></p>
             <p class="qualifications"><i class="fa-solid fa-location-dot"></i> <%=@doctor_profile.qualifications %></p>
             <p class="reviews"><i class="fa-solid fa-location-dot"></i> <%=@doctor_profile.reviews %></p>
             <% if current_user.favourites.exists?(doctor_profile_id: @doctor_profile.id) %>
