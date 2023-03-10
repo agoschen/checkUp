@@ -7,6 +7,8 @@ class DoctorProfile < ApplicationRecord
   validates :specialty, presence: true
   validates :practice_address, presence: true
   has_one_attached :photo
+  has_many :favourites
+  has_many :users, through: :favourites
 
   include PgSearch::Model
   pg_search_scope :search_by_specialty,

@@ -5,7 +5,6 @@ class FavouritesController < ApplicationController
     @doctor_profiles = DoctorProfile.all
   end
 
-
   def create
     @favourite = current_user.favourites.build(doctor_profile_id: params[:doctor_profile_id])
     if @favourite.save
@@ -17,7 +16,7 @@ class FavouritesController < ApplicationController
   end
 
   def destroy
-    @favourite = current_user.favourites.find_by(doctor_profile_id: params[:doctor_profile_id])
+    @favourite = current_user.favourites.find_by(doctor_profile_id: params[:id])
     if @favourite.destroy
       flash[:success] = "Doctor removed from favourites"
     else
