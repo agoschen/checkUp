@@ -54,7 +54,6 @@ doc_user_profile2 = DoctorProfile.create(
   practice_address: "Claremont, Cape Town",
   # availability: ["Mon 08-09", "Mon 09-10", "Mon 10-11", "Mon 12-13", "Mon 13-14", "Mon 14-15", "Tues 08-09", "Tues 09-10", "Tues 10-11"],
   user_id: doc_user2.id
-  practice_hours: 
 )
 file = File.open(File.join(__dir__, 'seed_images/doc1.png'))
 doc_user_profile2.photo.attach(io: file, filename: 'dr pp.png', content_type: 'image/png')
