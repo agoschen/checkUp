@@ -25,8 +25,8 @@
     <% end %>
             <div class="card-body">
         <h5 class="card-title mb-1">Dr. <%= doctor.user.first_name %> <%= doctor.user.last_name %></h5>
-        <p class="card-text text-muted mb-2"><strong>Specialty:</strong> <%= doctor.specialty %></p>
-        <p class="card-text text-muted mb-2"><strong>Location:</strong> <%= doctor.practice_address %></p>
+        <p class="card-text text-muted mb-2"><i class="fa-sharp fa-regular fa-stethoscope"></i> <%= doctor.specialty %></p>
+        <p class="card-text text-muted mb-2"><i class="fa-sharp fa-regular fa-location-dot"></i> <%= doctor.practice_address %></p>
         <hr>
           <%= link_to "View Doctor", doctor_profile_path(doctor), class: "btn btn-primary" %>
         </div>
