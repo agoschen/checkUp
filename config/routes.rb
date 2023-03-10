@@ -8,7 +8,9 @@ Rails.application.routes.draw do
 
   resources :doctor_profiles, only: [ :index, :show, :new, :create] do
     resources :appointments, only: [ :create, :index, :show]
+    resources :favourites, only: [:create, :destroy]
   end
 
   resources :appointments, only: [ :index, :show, :create ]
+  resources :favourites, only: [ :index ]
 end

@@ -1,3 +1,4 @@
+
 <div class="wrapper">
   <div class="container">
     <h2 class="header">Book An Appointment</h2>
@@ -16,8 +17,14 @@
             </h5>
             <p class="specialty"><i class="fa-solid fa-briefcase"></i> <%=@doctor_profile.specialty %></p>
             <p class="address"><i class="fa-solid fa-location-dot"></i> <%=@doctor_profile.practice_address %></p>
+            <% if current_user.favourites.exists?(doctor_profile_id: @doctor_profile.id) %>
+              <%= button_to "Remove from favourites", doctor_profile_favourite_path(current_user.favourites.find_by(doctor_profile_id: @doctor_profile.id)), method: :delete %>
+            <% else %>
+              <%= button_to "Add to favourites", doctor_profile_favourites_path(doctor_profile_id: @doctor_profile.id), method: :post %>
+        <% end %>
           </div>
         </div>
+        
       </div>
       <div class="second-wrap">
           <h3 class="title">Calender</h3>
