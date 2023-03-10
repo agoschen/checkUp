@@ -1,36 +1,49 @@
-<div class="container">
 
-  <div class="wrapper">
-    <div class="card-product first-wrap">
-    <% if @doctor_profile.photo.attached? %>
-      <%= cl_image_tag @doctor_profile.photo.key, class:"avatar-large"%>
-    <% else %>
-      <%= image_tag "blank-profile-circle.png", class:"avatar-large" %>
-    <% end %>
-      <div class="card-product-infos">
-        <h2><%=@doctor_profile.user.first_name %></h2>
-        <p><%=@doctor_profile.specialty %></p>
-        <p><%=@doctor_profile.user.phone_number %></p>
-        <p><%=@doctor_profile.practice_address %></p>
-        <% if current_user.favourites.exists?(doctor_profile_id: @doctor_profile.id) %>
-          <%= button_to "Remove from favourites", doctor_profile_favourite_path(current_user.favourites.find_by(doctor_profile_id: @doctor_profile.id)), method: :delete %>
-        <% else %>
-          <%= button_to "Add to favourites", doctor_profile_favourites_path(doctor_profile_id: @doctor_profile.id), method: :post %>
+<div class="wrapper">
+  <div class="container">
+    <h2 class="header">Book An Appointment</h2>
+    <div class="wrapper profile-wrapper">
+      <div class="card-product first-wrap">
+        <div class="home">
+          <h3 class="title">Doctor</h3>
+            <% if @doctor_profile.photo.attached? %>
+              <%= cl_image_tag @doctor_profile.photo.key, class:"avatar-large"%>
+            <% else %>
+              <%= image_tag "blank-profile-circle.png", class:"avatar-large" %>
+            <% end %>
+          <div class="card-product-infos">
+            <h5 class="name"><i class="fa-solid fa-user-doctor"></i> Dr. <%=@doctor_profile.user.first_name %>
+                <%=@doctor_profile.user.first_name %>
+            </h5>
+            <p class="specialty"><i class="fa-solid fa-briefcase"></i> <%=@doctor_profile.specialty %></p>
+            <p class="address"><i class="fa-solid fa-location-dot"></i> <%=@doctor_profile.practice_address %></p>
+            <% if current_user.favourites.exists?(doctor_profile_id: @doctor_profile.id) %>
+              <%= button_to "Remove from favourites", doctor_profile_favourite_path(current_user.favourites.find_by(doctor_profile_id: @doctor_profile.id)), method: :delete %>
+            <% else %>
+              <%= button_to "Add to favourites", doctor_profile_favourites_path(doctor_profile_id: @doctor_profile.id), method: :post %>
         <% end %>
+          </div>
+        </div>
+        
       </div>
-    </div>
-    <div class="second-wrap">
-      <%= simple_form_for [@doctor_profile, @appointment] do |f| %>
+      <div class="second-wrap">
+          <h3 class="title">Calender</h3>
+         <div class="">
+          <%= month_calendar do |date| %>
+            <%= date %>
+          <% end %>
+          </div>
+      </div>
+      <div class="second-wrap">
+      <h3 class="title">Book Appointment</h3>
+        <%= simple_form_for [@doctor_profile, @appointment] do |f| %>
         <%= f.input :date, label: 'Date' %>
         <%= f.input :start_time, label: 'Start_time' %>
         <%= f.input :end_time, label: 'End_time' %>
         <%= f.input :note, label: 'Reason for appointment' %>
         <%= f.button :submit, class:"btn btn-secondary" %>
-      <% end %>
+        <% end %>
+      </div>
     </div>
   </div>
-  <div class="">
-    <%= month_calendar do |date| %>
-      <%= date %>
-    <% end %>
 </div>
