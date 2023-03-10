@@ -19,10 +19,16 @@
   <img src="https://xsgames.co/randomusers/avatar.php?g=male" />
   </div>
   <div class="card-appointment-contact">
-    <h6> Date: <%= @appointment.date %> </h6>
-      <p> Start Time: <%= @appointment.start_time %> </p>
-      <p> Duration: <%= @appointment.end_time.to_i - @appointment.start_time.to_i %> hours </p>
-      <p> with patient: <%= @appointment.user.first_name %> <%= @appointment.user.last_name %></p>
+    <div>
+      <h6> Date: <%= @appointment.date %> </h6>
+        <p> Start Time: <%= @appointment.start_time %> </p>
+        <p> Duration: <%= @appointment.end_time.to_i - @appointment.start_time.to_i %> hours </p>
+        <p> with patient: <%= @appointment.user.first_name %> <%= @appointment.user.last_name %></p>
+    </div>
+    <div>
+      <h6> Notes: </h6>
+        <p><%= @appointment.notes %></p></p>
+    </div>
   </div>
 </div>
 <% else %>
