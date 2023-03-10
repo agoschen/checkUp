@@ -21,11 +21,6 @@ class AppointmentsController < ApplicationController
   def show
     @current_user = current_user
     @appointment = Appointment.find(params[:id])
-    # if current_user.doctor_profile
-    #   @appointment = Appointment.find(params[:id])
-    # else
-    #   @appointment = Appointment.find(params[:id])
-    # end
   end
 
   private

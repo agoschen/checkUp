@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_09_211014) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_10_114902) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -66,6 +66,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_09_211014) do
     t.date "availability"
     t.float "latitude"
     t.float "longitude"
+    t.string "bio"
+    t.string "practice_hours"
+    t.string "qualifications"
+    t.string "reviews"
     t.index ["user_id"], name: "index_doctor_profiles_on_user_id"
   end
 
