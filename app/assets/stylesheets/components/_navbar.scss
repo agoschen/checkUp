@@ -1,8 +1,14 @@
+nav{
+  padding-bottom: 80px;
+}
 .navbar{
   display: flex;
+  width: 100%;
   align-items: center;
   justify-content: space-between;
   background: white;
+  position: fixed;
+  height: 100px;
   p.logo{
     font-size: 25px;
     letter-spacing: 2px;

@@ -1,48 +1,47 @@
-<div class="container">
-
-<div class="row justify-content-center">
-    <div class="col-sm-8">
-      <%= form_with method: :get, class: "d-flex" do %>
+<div class="main-wrapper">
+  <div class="container">
+  <h2 class="header">Book An Appointment</h2>
+    <div class="search-bar">
+      <%= form_with method: :get, class: "search" do %>
         <%= text_field_tag :query,
           params[:query],
           class: "form-control",
-          placeholder: "Find a doctor"
+          placeholder: "Find a doctor.."
         %>
-        <%= submit_tag "Search", class: "btn btn-primary" %>
+        <%= submit_tag "Search", class: "button" %>
       <% end %>
     </div>
   </div>
-
-<div class="row mt-10" >
-  <div class="col-md-6">
-   <% @doctor_profiles.each do |doctor|%>
-    <div class="col-md-6">
-    <div class="card mb-3">
-    <% if doctor.photo.attached? %>
-      <% cl_image_tag doctor.photo.key, class: "card-img-top img-fluid rounded ", alt: "Doctor Image" %>
-    <% else %>
-      <%= image_tag "blank-profile-circle.png", class:"card-img-top img-fluid rounded" %>
-    <% end %>
-            <div class="card-body">
-        <h5 class="card-title mb-1">Dr. <%= doctor.user.first_name %> <%= doctor.user.last_name %></h5>
-        <p class="card-text text-muted mb-2"><i class="fa-sharp fa-regular fa-stethoscope"></i> <%= doctor.specialty %></p>
-        <p class="card-text text-muted mb-2"><i class="fa-sharp fa-regular fa-location-dot"></i> <%= doctor.practice_address %></p>
-        <hr>
-          <%= link_to "View Doctor", doctor_profile_path(doctor), class: "btn btn-primary" %>
+  <div class="container">
+    <div class="wrapper" >
+      <div class="card-grid">
+      <% @doctor_profiles.each do |doctor|%>
+        <%= link_to doctor_profile_path(doctor) do %>
+        <div class="home">
+          <div class="">
+            <% if doctor.photo.attached? %>
+              <% cl_image_tag doctor.photo.key, class: "medium", alt: "doctor" %>
+            <% else %>
+              <%= image_tag "blank-profile-circle.png", class:"meduim" %>
+            <% end %>
+              <div class="card-body">
+                <h5 class="name"><i class="fa-solid fa-user-doctor"></i> Dr. <%= doctor.user.first_name %> <%= doctor.user.last_name %></h5>
+                <p class="specialty"><i class="fa-solid fa-briefcase"></i> <%= doctor.specialty %></p>
+                <p class="address"><i class="fa-solid fa-location-dot"></i><%= doctor.practice_address.slice(0, 20) %></p>
+              </div>
+            </div>
+          </div>
+          <% end %>
+        <% end %>
+      </div>
+      <div class="col-md-6">
+        <div id="map sticky-top">
+          <div style="width: 100%; height: 600px;"
+            data-controller="map"
+            data-map-markers-value="<%= @markers.to_json %>"
+            data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+          </div>
         </div>
       </div>
-    </div>
-     <% end %>
   </div>
-
-  <div class="col-md-6">
-    <div id="map sticky-top">
-      <div style="width: 100%; height: 600px;"
-        data-controller="map"
-        data-map-markers-value="<%= @markers.to_json %>"
-        data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
-      </div>
-    </div>
-  </div>
-</div>
 </div>
