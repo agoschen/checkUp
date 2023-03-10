@@ -12,8 +12,8 @@
               <%= image_tag "blank-profile-circle.png", class:"avatar-large" %>
             <% end %>
           <div class="card-product-infos">
-            <h5 class="name"><i class="fa-solid fa-user-doctor"></i> Dr. <%=@doctor_profile.user.first_name %>
-                <%=@doctor_profile.user.first_name %>
+            <h5 class="name"><i class="fa-solid fa-user-doctor"></i> Dr.
+                <%=@doctor_profile.user.last_name %>
             </h5>
             <p class="specialty"><i class="fa-solid fa-briefcase"></i> <%=@doctor_profile.specialty %></p>
             <p class="address"><i class="fa-solid fa-location-dot"></i> <%=@doctor_profile.practice_address %></p>
